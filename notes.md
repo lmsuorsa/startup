@@ -11,6 +11,9 @@
 ## AWS
 
 My IP address is: 54.81.96.130
+
+I'm not sure if that's actually my IP address!
+
 Launching my AMI I initially put it on a private subnet. Even though it had a public IP address and the security group was right, I wasn't able to connect to it.
 
 ## Caddy
