@@ -1,4 +1,4 @@
-# Your startup name here
+# CrossWordPuzz!
 
 [My Notes](notes.md)
 
@@ -18,45 +18,44 @@ A brief description of the application here. A brief modification of the applica
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] Proper use of Markdown
-- [ ] A concise and compelling elevator pitch
-- [ ] Description of key features
-- [ ] Description of how you will use each technology
-- [ ] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
+- [x] Proper use of Markdown
+- [x] A concise and compelling elevator pitch
+- [x] Description of key features
+- [x] Description of how you will use each technology
+- [x] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
 
 ### Elevator pitch
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Do you love crossword puzzles? Do you love races and competitions? Well then you'll love my website! Once a day, all users will receive the same crossword puzzle for them to complete. As they solve it, they will also be able to see the progress (in percentage) of other users who started at the same time. On top of that, they will be able to see the leaderboards for the fastest solvers of the day! With the pressure on, will you be able to win?
 
 ### Design
 
-![Design image](placeholder.png)
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-```mermaid
-sequenceDiagram
-    actor You
-    actor Website
-    You->>Website: Replace this with your design
-```
+![My image](image.png)
+<img width="1234" height="730" alt="image" src="https://github.com/user-attachments/assets/3cb34bb8-c74e-439f-88ea-d563395ac673" />
 
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+- Secure login over HTTPS
+- Ability to solve the crossword puzzle of the day
+- Real-time display of progress of other users who started at the same time
+- Real-time display of leaderboards for fastest solvers of the day's puzzle
+- Leaderboards for previous puzzles stored in leaderboards page
+- User stats on previous puzzles viewable on their profile
 
 ### Technologies
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Description here
-- **CSS** - Description here
-- **React** - Description here
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+- **HTML** - Used to create structural and organizational elements. 4 HTML pages. One for login, crossword puzzle, leaderboards, and user profiles.
+- **CSS** - Used to style and animate the web pages.
+- **React** - Provides login, crossword, leaderboard, backend endpoint calls.
+- **Service** - Backend service with endpoints for
+    - retrieving times from finished puzzles
+    - retrieving percentage from other users doing the puzzle
+    - crossword puzzles from third party database
+    - Register, login, and logout users. Credentials securely stored in database. Can't play unless you create an account.
+- **DB/Login** - Store users, user stats, and leaderboards in database.
+- **WebSocket** - As users complete the puzzle of the day, their percentage complete will be shown to other users completing the puzzle. When they finish, their times will appear in the leaderboards.
 
 ## 🚀 AWS deliverable
 
