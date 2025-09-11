@@ -30,8 +30,7 @@ Do you love crossword puzzles? Do you love races and competitions? Well then you
 
 ### Design
 
-![My image](image.png)
-<img width="1234" height="730" alt="image" src="https://github.com/user-attachments/assets/3cb34bb8-c74e-439f-88ea-d563395ac673" />
+![My image](startupSpec.png)
 
 ### Key features
 
