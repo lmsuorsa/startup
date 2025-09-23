@@ -20,7 +20,10 @@ No problems worked just like it said in the [instruction](https://github.com/web
 
 This was easy. I was careful to use the correct structural elements such as header, footer, main, nav, and form. The links between the three views work great using the `a` element.
 
-The part I didn't like was the duplication of the header and footer code. This is messy, but it will get cleaned up when I get to React.
+It starts with the top level content body. The body has three children, a header, main, and footer. Each of the body children then contains other structural content.
+The header contains a paragraph with a span, and a navigation containing multiple divisions of sub-content.
+The main contains multiple sections that contain either an unordered list (ul) or a table. Main also contains an aside for content that does not fit the content flow of the sections.
+The footer has a content division with a single span.
 
 w-icon.png acquired from: https://uxwing.com/w-button-icon/
 
