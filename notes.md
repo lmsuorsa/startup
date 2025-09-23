@@ -1,6 +1,6 @@
 # CS 260 Notes
 
-[My startup - Simon](https://simon.cs260.click)
+[My startup - Simon](https://crosswordpuzz.click)
 
 ## Helpful links
 
@@ -10,11 +10,7 @@
 
 ## AWS
 
-My IP address is: 54.81.96.130
-
-I'm not sure if that's actually my IP address!
-
-Launching my AMI I initially put it on a private subnet. Even though it had a public IP address and the security group was right, I wasn't able to connect to it.
+This was a little tedious, but not too bad. Using the Route53 and EC2 services in AWS, I was able to deploy a remote server and assign a domain name to it.
 
 ## Caddy
 
