@@ -9,7 +9,12 @@
     </head>
     <body>
         <header>
-            <h1>CrossWordPuzz</h1>
+            <h1>Cross
+                <!--temporary style handling during html phase, should port to css class-->
+                <!--SHOULD STYLE TITLE HEADER LIKE A CROSSWORD PUZZLE -->
+                <img class="title-w" src="w-icon.png" width="50">ord
+                Puzz
+            </h1>
             <nav>
                 <menu>
                     <li><a href="index.html">Home</a></li>
@@ -22,14 +27,13 @@
         </header>
         <main>
             <h1>Welcome :)</h1>
-            <h5>Login or Create an Account</h5>
+            <span><b>Login or Create an account!</b></span>
+            <!--gpt says "get" exposes data in URL, consult about using "post" instead for password security-->
             <form method="get" action="play.html">
                 <div>
-                    <span></span>
                     <input type="text" placeholder="username"/>
                 </div>
                 <div>
-                    <span></span>
                     <input type="password" placeholder="password"/>
                 </div>
                 <button type="submit">Login</button>
