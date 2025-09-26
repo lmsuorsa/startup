@@ -60,21 +60,21 @@ I am going to use the required technologies in the following ways.
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [x] **Server deployed and accessible with custom domain name** - [My server link](https://yourdomainnamehere.click).
+- [x] **Server deployed and accessible with custom domain name** - [My server link](https://crosswordpuzz.click).
 
 ## 🚀 HTML deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [x] **HTML pages** - I created login (index), play, profile, leaderboards, and about pages.
+- [x] **Proper HTML element usage** - I use html elements properly in these pages.
+- [x] **Links** - I use links to get to each page of the website. 
+- [x] **Text** - I use text in these html pages.
+- [x] **3rd party API placeholder** - I hope to find a 3rd party API to pull crossword puzzles from, but if that isn't possible I will add quotes to my 'about' page.
+- [x] **Images** - I put a very cool tiger in my about page.
+- [x] **Login placeholder** - The index.html page has a login/account creation placeholder
+- [x] **DB data placeholder** - Player times and ranks will be stored on their profiles and in the leaderboards page.
+- [x] **WebSocket placeholder** - In the 'play' page, clients will communicate with the server to see the leaderboards and progress of other racers.
 
 ## 🚀 CSS deliverable
 
