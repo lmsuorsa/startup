@@ -14,13 +14,9 @@
             crossorigin="anonymous"
         />
     </head>
-    <body>
-        <header>
-            <h1>Cross
-                <!--temporary style handling during html phase, should port to css class-->
-                <!--SHOULD STYLE TITLE HEADER LIKE A CROSSWORD PUZZLE -->
-                <img class="title-w" src="w-icon.png" width="50">ordPuzz
-            </h1>
+    <body class="bg-dark text-light">
+        <header class="container-fluid">
+            <h1>CrossWordPuzz</h1>
             <nav>
                 <menu>
                     <li><a href="index.html">Home</a></li>
@@ -32,20 +28,22 @@
             </nav>
             <hr />
         </header>
-        <main>
-            <h1>Welcome :)</h1>
-            <span><b>Login or Create an account!</b></span>
-            <!--gpt says "get" exposes data in URL, consult about using "post" instead for password security-->
-            <form method="get" action="play.html">
-                <div>
-                    <input type="text" placeholder="username"/>
-                </div>
-                <div>
-                    <input type="password" placeholder="password"/>
-                </div>
-                <button type="submit">Login</button>
-                <button type="submit">Create</button>
-            </form>
+        <main >
+            <div>
+                <h1>Welcome :)</h1>
+                <b>Login or Create an account!</b>
+                <!--gpt says "get" exposes data in URL, consult about using "post" instead for password security-->
+                <form method="get" action="play.html">
+                    <div>
+                        <input type="text" placeholder="username"/>
+                    </div>
+                    <div>
+                        <input type="password" placeholder="password"/>
+                    </div>
+                    <button type="submit">Login</button>
+                    <button type="submit">Create</button>
+                </form>
+            </div>
         </main>
         <footer>
             <hr/>
