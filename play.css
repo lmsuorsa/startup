@@ -21,11 +21,13 @@ main {
     display: flex;
     flex-direction: column;
     flex: 1;
-
+    align-items: center;
 }
 
 table.crossword {
     table-layout: fixed;
+    width: 60%;
+    aspect-ratio: 1 / 1;
 }
 
 td.square, td.space {
@@ -52,7 +54,7 @@ td.square input {
     height: 100%;
     border: none;
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     box-sizing: border-box;
 }
 
