@@ -13,10 +13,6 @@ main {
     background-color: hsl(0, 0%, 89%);
 }
 
-.sidebar h3, table {
-    justify-content: center;
-}
-
 .puzzleAndClues {
     display: flex;
     flex-direction: column;
@@ -72,6 +68,12 @@ td.square input {
 @media (orientation: portrait) {
     .sidebar {
         display: none;
+    }
+}
+
+@media (max-height: 700px) {
+    .sidebar {
+        height: 100vh;
     }
 }
 
