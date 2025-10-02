@@ -40,17 +40,16 @@
         <main class="bg-light text-dark">
             <div>
                 <h1>Welcome :)</h1>
-                <b>Login or Create an account!</b>
                 <!--gpt says "get" exposes data in URL, consult about using "post" instead for password security-->
                 <form method="get" action="play.html">
-                    <div>
-                        <input type="text" placeholder="username"/>
+                    <div class="input-group mb-3">
+                        <input class="form-control" type="text" placeholder="username" />
                     </div>
-                    <div>
-                        <input type="password" placeholder="password"/>
+                    <div class="input-group mb-3">
+                        <input class="form-control" type="password" placeholder="password" />
                     </div>
-                    <button type="submit">Login</button>
-                    <button type="submit">Create</button>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                    <button type="submit" class="btn btn-secondary">Create</button>
                 </form>
             </div>
         </main>
