@@ -45,5 +45,6 @@ td.space {
 .clues {
     display: flex;
     flex-direction: row;
-    padding: 40px
+    padding: 40px;
+    
 }
