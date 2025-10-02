@@ -6,6 +6,14 @@ main {
     justify-content: space-around;
 }
 
+.sidebar {
+    width: 300px;
+    height: 100%;
+    position: fixed;
+    top: 80px;
+    left: 0;
+}
+
 
 table.crossword {
     table-layout: fixed;
@@ -14,7 +22,6 @@ table.crossword {
 }
 
 td.square {
-    width: 40%;
     border: 2px solid #000;
     box-sizing: border-box;
     text-align:center;
@@ -33,4 +40,10 @@ td.space {
     border: none;
     box-sizing: border-box;
     text-align:center;
+}
+
+.clues {
+    display: flex;
+    flex-direction: row;
+    padding: 40px
 }
