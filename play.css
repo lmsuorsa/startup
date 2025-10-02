@@ -1,11 +1,36 @@
 main {
-  flex: 1 calc(100vh - 110px);
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
+    flex: 1 calc(100vh - 110px);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
 }
 
-div .clues {
-    
+
+table.crossword {
+    table-layout: fixed;
+    max-width: 80%;
+    min-width: 40px;
+}
+
+td.square {
+    width: 40%;
+    border: 2px solid #000;
+    box-sizing: border-box;
+    text-align:center;
+}
+
+table.crossword td.space {
+    width: 40px;
+    height: 40px;
+    border: none;
+    box-sizing: border-box;
+    text-align:center;
+}
+
+td.square input {
+    width: 40px;
+    height: 40px;
+    border: none;
+    text-align: center;
 }
