@@ -20,17 +20,17 @@ td.square {
     text-align:center;
 }
 
-table.crossword td.space {
-    width: 40px;
-    height: 40px;
-    border: none;
-    box-sizing: border-box;
-    text-align:center;
-}
-
 td.square input {
     width: 40px;
     height: 40px;
     border: none;
     text-align: center;
+}
+
+td.space {
+    width: 40px;
+    height: 40px;
+    border: none;
+    box-sizing: border-box;
+    text-align:center;
 }
