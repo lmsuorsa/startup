@@ -13,3 +13,12 @@ h2, p {
     text-align: center;
     width: 75%
 }
+
+#quote {
+    text-align: left;
+}
+
+#author {
+    text-align: right;
+    font-style: italic;
+}
