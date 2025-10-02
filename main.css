@@ -42,11 +42,6 @@ footer a {
     float: right;
 }
 
-@media (orientation: portrait) {
-  main {
-    flex-direction: column;
-  }
-}
 
 @media (max-height: 700px) {
     header {

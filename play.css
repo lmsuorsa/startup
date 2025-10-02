@@ -8,43 +8,70 @@ main {
 
 .sidebar {
     width: 300px;
-    height: 100%;
-    position: fixed;
-    top: 80px;
+    height: calc(100vh - 110px);
     left: 0;
+    background-color: hsl(0, 0%, 89%);
 }
 
+.sidebar h3, table {
+    justify-content: center;
+}
+
+.puzzleAndClues {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+}
 
 table.crossword {
     table-layout: fixed;
-    max-width: 80%;
-    min-width: 40px;
+}
+
+td.square, td.space {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-align: center;
+    vertical-align: middle;
 }
 
 td.square {
     border: 2px solid #000;
-    box-sizing: border-box;
-    text-align:center;
-}
-
-td.square input {
-    width: 40px;
-    height: 40px;
-    border: none;
-    text-align: center;
 }
 
 td.space {
-    width: 40px;
-    height: 40px;
+    border: 1px solid hsl(0, 0%, 89%);
+    background-color: hsl(0, 0%, 89%);
+}
+
+td.square input {
+    width: 100%;
+    height: 100%;
     border: none;
+    text-align: center;
+    font-size: 1.2rem;
     box-sizing: border-box;
-    text-align:center;
 }
 
 .clues {
     display: flex;
     flex-direction: row;
     padding: 40px;
-    
+    gap: 20px;
+    padding: 0;
+    display: flex;
+    text-align: center;
+    list-style-position: inside;
+    justify-content: center;
 }
+
+@media (orientation: portrait) {
+    .sidebar {
+        display: none;
+    }
+}
+
+
