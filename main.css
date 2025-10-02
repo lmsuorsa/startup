@@ -43,7 +43,7 @@ footer a {
 }
 
 
-@media (max-height: 700px) {
+@media (max-height: 600px) {
     header {
         display: none;
     }
