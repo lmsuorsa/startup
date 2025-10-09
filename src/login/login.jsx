@@ -6,7 +6,7 @@ export function Login() {
     <main className="bg-light text-dark">
         <div>
             <h1>Welcome :)</h1>
-            <form method="get" action="play.html">
+            <form method="get" action="/play">
                 <div className="input-group mb-3">
                     <input className="form-control" type="text" placeholder="username" />
                 </div>
