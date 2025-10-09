@@ -75,6 +75,19 @@ I also used SVG to make the icon and logo for the app. This turned out to be a p
 ## React Part 1: Routing
 
 Vite:
+- prep
+  - `npm init -y`: make project into npm package
+  - `npm install vite@latest -D` : uses Vite as dev dependency so it doesn't bundle in prod results, just while bundling software and using toolchain
+  - add `node_modules/` to `.gitignore` : don't need to commit 3rd party code
+  - ```
+    "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+    }
+    ```
+    commands for running Vite
+  - create `public` and `src` directories
 - npm run dev to create debug server
 - npm run build when deliverable finished to create deployment-ready version contained in `dist` subdirectory
 
