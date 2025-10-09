@@ -37,17 +37,17 @@
                 </menu>
             </nav>
         </header>
-        <main class="bg-light text-dark">
-            <div class="titleAndTable">
-                <h2>Leaderboards</h2>
-                <table class="table table-hover">
+        <main className="bg-light text-dark">
+        <div class="titleAndTable">
+            <table class="table table-hover">
+                <thead className="table-dark">
                     <tr>
-                        <thead>
-                            <th>Rank</th>
-                            <th class="gold">Player</th>
-                            <th>Time</th>
-                        </thead>
+                        <th>Rank</th>
+                        <th class="gold">Player</th>
+                        <th>Time</th>
                     </tr>
+                </thead>
+                <tbody>
                     <tr>
                         <td>#1</td>
                         <td class="silver">Player A</td>
@@ -73,8 +73,9 @@
                         <td>Player E</td>
                         <td>3:56</td>
                     </tr>
-                </table>
-            </div>
+                </tbody>
+            </table>
+        </div>
         </main>
         <footer class="bg-dark text-white-50">
             <div class="container-fluid">
