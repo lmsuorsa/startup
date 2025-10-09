@@ -12,13 +12,15 @@ import { About } from './about/about';
 export default function App() {
     return (
         <BrowserRouter>
-            <div className="app bg-dark text-light">
+            <div className="app">
                 <header className="bg-dark text-light container-fluid">
                     <nav className="navbar fixed-top navbar-dark">
-                        <a className="navbar-brand" href="#">CrossWordPuzz</a>
+                        <div className="navbar-brand">
+                            CrossWordPuzz
+                        </div>
                         <menu className="navbar-nav">
                             <li className="nav-item">
-                                <NavLink className='nav-link' to=''>Home</NavLink>
+                                <NavLink className='nav-link' to='/'>Home</NavLink>
                             </li>
                             <li className="nav-item">
                                 <NavLink className='nav-link' to='play'>Play</NavLink>
