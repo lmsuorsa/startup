@@ -1,0 +1,24 @@
+main div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+img {
+    width: 70%;
+    height: 250px;
+}
+
+h2, p {
+    text-align: center;
+    width: 75%
+}
+
+#quote {
+    text-align: left;
+}
+
+#author {
+    text-align: right;
+    font-style: italic;
+}
