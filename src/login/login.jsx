@@ -13,7 +13,7 @@ export function Login() {
                 <div className="input-group mb-3">
                     <input className="form-control" type="password" placeholder="password" />
                 </div>
-                <button type="submit" className="btn btn-primary">Login</button>
+                <button type="submit" className="btn btn-primary me-2">Login</button>
                 <button type="submit" className="btn btn-secondary">Create</button>
             </form>
         </div>
