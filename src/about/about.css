@@ -9,7 +9,8 @@ img {
     height: 250px;
 }
 
-h2, p {
+/* WHY IS THIS AFFECTING LEADERBOARDS.CC??? HAD TO REMOVE h2*/
+p {
     text-align: center;
     width: 75%
 }
