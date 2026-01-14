@@ -2,7 +2,7 @@
 
 [My Notes](notes.md)
 
-Each player starts with 5 dice. At the beginning of a round, players roll their dice to get values. With each turn, a player must either up the ante on the number or value of dice. For example, if the current bet was "two 3's", the next call could be "three 3's" (raising the number) or "two 4's" (raising the value). If a player believes the current bet is not in the combined pool of dice, they can call the bluff, ending the round. Everyone shows their dice. If the caller is right, the bluffer loses a die. If the "bluffer" was right, the caller loses a die. Play until there is only one person remaining.
+Each player starts with 5 dice. At the beginning of a round, players roll their dice to get values. With each turn, a player must either up the ante on the number or value of dice. For example, if the current bet was "two 3's", the next call could be "three 3's" (raising the number) or "two 4's" (raising the value). If a player believes the current bet is not in the combined pool of dice, they can call the bluff, ending the round. Everyone shows their dice. If the accuser is right, the better loses a die. If the better is right, the accuser loses a die. Play until only one player remains.
 
 ## 🚀 Specification Deliverable
 
