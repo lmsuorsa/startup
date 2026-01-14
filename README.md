@@ -16,7 +16,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 ### Elevator pitch
 
-As seen in Pirate's of the Caribbean, Liar's Dice is the game of choice among scallywags at sea. To put it simply, you can raise the number of dice, the value of the dice, or call out the last man for being a dirty liar and whittle him down until he's got nothing but an empty cup! It's simple, engaging, and anyone can win if they play their hand right, making it fun for everyone involved. Try your luck (without gambling decades of service in Davy Jone's crew!)
+As seen in Pirate's of the Caribbean, Liar's Dice is the game of choice among scallywags at sea. To put it simply, you can raise the number of dice, the value of the dice, or call out the last man for being a dirty liar and empty his cup! It's simple, engaging, and anyone can win if they play their hand right, making it fun for everyone involved. Try your luck (without gambling decades of service in Davy Jone's crew!)
 
 ### Design
 
