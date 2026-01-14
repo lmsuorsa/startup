@@ -17,11 +17,11 @@ A brief description of the application here. Lorem ipsum dolor sit amet, consect
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] Proper use of Markdown
-- [ ] A concise and compelling elevator pitch
-- [ ] Description of key features
-- [ ] Description of how you will use each technology
-- [ ] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
+- [x] Proper use of Markdown
+- [x] A concise and compelling elevator pitch
+- [x] Description of key features
+- [x] Description of how you will use each technology
+- [x] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
 
 ### Elevator pitch
 
@@ -35,20 +35,28 @@ Each player starts with 5 dice. At the beginning of a round, players roll their 
 
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+- Secure login over HTTPS
+- Ability to either raise bet in either number or value
+- Ability to call bluff on previous bet
+- Real-time display of the current and previous bets
+- Real-time display of current number of dice on the board
+- Real-time display of the values of YOUR dice
+- Results are persistently stored
 
 ### Technologies
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Description here
-- **CSS** - Description here
-- **React** - Description here
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+- **HTML** - Used to create structural and organizational elements. 2 HTML pages. One for login, other for gameplay.
+- **CSS** - Used to style and animate the web pages.
+- **React** - Provides login, choice display for making bets, display's other user's bets, and use of React for routing and components.
+- **Service** - Backend service with endpoints for:
+  - login
+  - retrieving bets
+  - submitting bets
+  - retrieving round results
+- **DB/Login** - Store users in database
+- **WebSocket** - As users play against each other, their bets are displayed live to other players on the board.
 
 ## 🚀 AWS deliverable
 
