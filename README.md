@@ -4,12 +4,6 @@
 
 Each player starts with 5 dice. At the beginning of a round, players roll their dice to get values. With each turn, a player must either up the ante on the number or value of dice. For example, if the current bet was "two 3's", the next call could be "three 3's" (raising the number) or "two 4's" (raising the value). If a player believes the current bet is not in the combined pool of dice, they can call the bluff, ending the round. Everyone shows their dice. If the caller is right, the bluffer loses a die. If the "bluffer" was right, the caller loses a die. Play until there is only one person remaining.
 
-> [!NOTE]
-> This is a template for your startup application. You must modify this `README.md` file for each phase of your development. You only need to fill in the section for each deliverable when that deliverable is submitted in Canvas. Without completing the section for a deliverable, the TA will not know what to look for when grading your submission. Feel free to add additional information to each deliverable description, but make sure you at least have the list of rubric items and a description of what you did for each item.
-
-> [!NOTE]
-> If you are not familiar with Markdown then you should review the [documentation](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) before continuing.
-
 ## 🚀 Specification Deliverable
 
 > [!NOTE]
