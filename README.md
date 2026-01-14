@@ -1,4 +1,4 @@
-# Your startup name here
+# Liar's Dice!
 
 [My Notes](notes.md)
 
@@ -25,20 +25,13 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 ### Elevator pitch
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+As seen in Pirate's of the Caribbean, Liar's Dice is the game of choice among scallywags at sea. To put it simply, you can raise the number of dice, the value of the dice, or call out the last man for being a dirty liar and whittle him down until he's got nothing but an empty cup! It's simple, engaging, and anyone can win if they play their hand right, making it fun for everyone involved. Try your luck (without gambling decades of service in Davy Jone's crew!)
 
 ### Design
 
-![Design image](placeholder.png)
+![Design image](startupSpec.png)
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-```mermaid
-sequenceDiagram
-    actor You
-    actor Website
-    You->>Website: Replace this with your design
-```
+Each player starts with 5 dice. At the beginning of a round, players roll their dice and look at them privately. With each turn, a player must either up the ante on the number or value of dice. For example, if the current bet was "two 3's", the next call could be "three 3's" (raising the number) or "two 4's" (raising the value). If a player believes the current bet is not in the combined pool of dice, they can call the bluff, ending the round. If the caller is right, the bluffer loses a die. If the "bluffer" was right, the caller loses a die.
 
 ### Key features
 
