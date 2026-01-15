@@ -10,8 +10,21 @@
 
 ## AWS
 
-My IP address is: 54.81.96.130
-Launching my AMI I initially put it on a private subnet. Even though it had a public IP address and the security group was right, I wasn't able to connect to it.
+- DNS request, it returns IP, user goes to website
+- terminal commands
+      - 'dig byu.edu' : all DNS records
+            - 'dig byu.edu +short'
+      - 'whois byu.edu' : information
+      - 'nslookup byu.edu' : different IP addresses
+- domain name
+      - [subdomain.]*secondary.top
+      - top level domains
+            - originals, country, generic
+      - react.simon.cs260.click
+- localhost (127.0.0.1)
+- DNS record type
+      - A/AAAA name: IPV4/IPV6
+      - CNAME - canonical name/alias
 
 ## Caddy
 
