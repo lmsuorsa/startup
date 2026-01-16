@@ -25,10 +25,12 @@
 - DNS record type
       - A/AAAA name: IPV4/IPV6
       - CNAME - canonical name/alias
+- EC2 to initialize server instance
+- Route 53 to register domain and map it to server
 
 ## Caddy
 
-No problems worked just like it said in the [instruction](https://github.com/webprogramming260/.github/blob/main/profile/webServers/https/https.md).
+No problems! Update domains as specifed in [instruction](https://github.com/webprogramming260/.github/blob/main/profile/webServers/https/https.md).
 
 ## HTML
 
