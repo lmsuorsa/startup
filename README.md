@@ -44,6 +44,7 @@ I am going to use the required technologies in the following ways.
   - retrieving bets
   - submitting bets
   - retrieving round results
+  - pull pirate quotes/pictures from third party databases
 - **DB/Login** - Store users in database
 - **WebSocket** - As users play against each other, their bets are displayed live to other players on the board.
 
@@ -51,7 +52,7 @@ I am going to use the required technologies in the following ways.
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Server deployed and accessible with custom domain name** - [My server link](https://yourdomainnamehere.click).
+- [x] **Server deployed and accessible with custom domain name** - [My server link](https://liarsdice.click).
 
 ## 🚀 HTML deliverable
 
