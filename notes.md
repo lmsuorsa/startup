@@ -10,6 +10,11 @@
 
 ## AWS
 
+- Tech stack overview
+    - react - frontend
+    - caddy 2 - routing of requests
+    - node js - what app runs on
+    - mongo DB - database
 - DNS request, it returns IP, user goes to website
 - terminal commands
       - 'dig byu.edu' : all DNS records
@@ -30,7 +35,10 @@
 
 ## Caddy
 
-No problems! Update domains as specifed in [instruction](https://github.com/webprogramming260/.github/blob/main/profile/webServers/https/https.md).
+Caddy
+- modify caddyfile in server to domain name
+- sudo service caddy restart
+- Update domains as specifed in [instruction](https://github.com/webprogramming260/.github/blob/main/profile/webServers/https/https.md).
 
 ## HTML
 
