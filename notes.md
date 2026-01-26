@@ -35,12 +35,111 @@
 
 ## Caddy
 
-Caddy
 - modify caddyfile in server to domain name
 - sudo service caddy restart
 - Update domains as specifed in [instruction](https://github.com/webprogramming260/.github/blob/main/profile/webServers/https/https.md).
 
 ## HTML
+
+#### HTML intro
+
+- comments are &lt;!-- here --&gt;
+- main html file named 'index.html'
+
+| Element | Meaning                                                          |
+| ------- | ---------------------------------------------------------------- |
+| html    | The page container                                               |
+| head    | Header information                                               |
+| title   | Title of the page                                                |
+| meta    | Metadata for the page such as character set or viewport settings |
+| script  | JavaScript reference (external or inline)                        |
+| include | External content reference                                       |
+| body    | The entire content body of the page                              |
+| header  | Header of the main content                                       |
+| footer  | Footer of the main content                                       |
+| nav     | Navigational inputs                                              |
+| main    | Main content of the page                                         |
+| section | A section of the main content                                    |
+| aside   | Aside content from the main content                              |
+| div     | A block division of content                                      |
+| span    | An inline span of content                                        |
+| h<1-9>  | Text heading (h1 highest → h9 lowest)                            |
+| p       | A paragraph of text                                              |
+| b       | Bring attention                                                  |
+| table   | Table                                                            |
+| tr      | Table row                                                        |
+| th      | Table header                                                     |
+| td      | Table data                                                       |
+| ol, ul  | Ordered or unordered list                                        |
+| li      | List item                                                        |
+| a       | Anchor the text to a hyperlink                                   |
+| img     | Graphical image reference                                        |
+| dialog  | Interactive component such as a confirmation                     |
+| form    | A collection of user input                                       |
+| input   | User input field                                                 |
+| audio   | Audio content                                                    |
+| video   | Video content                                                    |
+| svg     | Scalable vector graphic content                                  |
+| iframe  | Inline frame of another HTML page                                |
+
+#### Structure
+
+- body has three children, a header, main, and footer
+- body, header, footer, main, section, aside, p, table, ol/ul, div, and span
+
+#### Input
+
+| Element  | Meaning                          | Example                                        |
+| -------- | -------------------------------- | ---------------------------------------------- |
+| form     | Input container and submission   | `<form action="form.html" method="post">`      |
+| fieldset | Labeled input grouping           | `<fieldset> ... </fieldset>`                   |
+| input    | Multiple types of user input     | `<input type="" />`                            |
+| select   | Selection dropdown               | `<select><option>1</option></select>`          |
+| optgroup | Grouped selection dropdown       | `<optgroup><option>1</option></optgroup>`      |
+| option   | Selection option                 | `<option selected>option2</option>`            |
+| textarea | Multiline text input             | `<textarea></textarea>`                        |
+| label    | Individual input label           | `<label for="range">Range: </label>`           |
+| output   | Output of input                  | `<output for="range">0</output>`               |
+| meter    | Display value with a known range | `<meter min="0" max="100" value="50"></meter>` |
+
+| Type           | Meaning                           |
+| -------------- | --------------------------------- |
+| text           | Single line textual value         |
+| password       | Obscured password                 |
+| email          | Email address                     |
+| tel            | Telephone number                  |
+| url            | URL address                       |
+| number         | Numerical value                   |
+| checkbox       | Inclusive selection               |
+| radio          | Exclusive selection               |
+| range          | Range-limited number              |
+| date           | Year, month, day                  |
+| datetime-local | Date and time                     |
+| month          | Year, month                       |
+| week           | Week of year                      |
+| color          | Color                             |
+| file           | Local file                        |
+| submit         | Button to trigger form submission |
+
+| Attribute | Meaning                                                              |
+| --------- | -------------------------------------------------------------------- |
+| name      | The name of the input; submitted as the input’s identifier in a form |
+| disabled  | Disables user interaction with the input                             |
+| value     | The initial value of the input                                       |
+| required  | Indicates that a value is required for validity                      |
+
+- pattern : provides a regular expression that must match for the input to be considered as valid
+
+#### Media
+
+| Element | Description                                                                         |
+| ------- | ----------------------------------------------------------------------------------- |
+| img     | Simple reference to an external image file                                          |
+| audio   | Simple reference to an external audio file                                          |
+| video   | Simple reference to an external video file                                          |
+| svg     | Contains code to render a scalable visual image; can be animated                    |
+| canvas  | Script-driven drawing surface that contains code to render visuals; can be animated |
+
 
 
 
