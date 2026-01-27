@@ -1,6 +1,6 @@
 # CS 260 Notes
 
-[My startup - Simon](https://simon.cs260.click)
+[My startup - Liar's Dice](https://startup.liarsdice.click)
 
 ## Helpful links
 
@@ -158,7 +158,7 @@
 - missed day 1
 
 #### Responsive Design
-- <meta name="viewport" />
+- &lt;meta name="viewport" /&gt;
 - float:right
 - display:grid
       - grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
