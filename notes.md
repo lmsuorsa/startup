@@ -17,19 +17,19 @@
     - mongo DB - database
 - DNS request, it returns IP, user goes to website
 - terminal commands
-      - 'dig byu.edu' : all DNS records
-            - 'dig byu.edu +short'
-      - 'whois byu.edu' : information
-      - 'nslookup byu.edu' : different IP addresses
+    - 'dig byu.edu' : all DNS records
+        - 'dig byu.edu +short'
+    - 'whois byu.edu' : information
+    - 'nslookup byu.edu' : different IP addresses
 - domain name
-      - [subdomain.]*secondary.top
-      - top level domains
-            - originals, country, generic
-      - react.simon.cs260.click
+    - [subdomain.]*secondary.top
+    - top level domains
+        - originals, country, generic
+    - react.simon.cs260.click
 - localhost (127.0.0.1)
 - DNS record type
-      - A/AAAA name: IPV4/IPV6
-      - CNAME - canonical name/alias
+    - A/AAAA name: IPV4/IPV6
+    - CNAME - canonical name/alias
 - EC2 to initialize server instance
 - Route 53 to register domain and map it to server
 
@@ -141,17 +141,17 @@
 | canvas  | Script-driven drawing surface that contains code to render visuals; can be animated |
 
 - Image
-      - should also include an `alt` attribute that describes the image
+    - should also include an `alt` attribute that describes the image
 - Audio
-      - `controls` attribute if you want the user to be able to control the audio playback
-      - do not display the controls = no visual representation of the audio on page
-      - `autoplay` attribute starts the audio playing as soon as the audio file is loaded
-      - `loop` attribute loops it repeatedly
+    - `controls` attribute if you want the user to be able to control the audio playback
+    - do not display the controls = no visual representation of the audio on page
+    - `autoplay` attribute starts the audio playing as soon as the audio file is loaded
+    - `loop` attribute loops it repeatedly
 - Video
-      - can include the controls or autoplay attributes
-      - may need to include the crossorigin="anonymous" attribute if you are requesting files from a different domain than the one serving your content
+    - can include the controls or autoplay attributes
+    - may need to include the crossorigin="anonymous" attribute if you are requesting files from a different domain than the one serving your content
 - Internal media
-      - `svg` and `canvas` allow you to create images directly within your HTML
+    - `svg` and `canvas` allow you to create images directly within your HTML
 
 ## CSS
 
@@ -161,23 +161,23 @@
 - &lt;meta name="viewport" /&gt;
 - float:right
 - display:grid
-      - grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      - grid-auto-rows: 300px
-      - grid-gap
+    - grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    - grid-auto-rows: 300px
+    - grid-gap
 - display:flex
-      - make layout flexible for children
-      - in child css:
-            - flex: grow, shrink, basis
-            - grow: behavior with extra room
-            - shrink: behavior with not enough room
-            - basis: default size
-      - flex-direction: row or column
-      - justify-content: center
-      - align-items: center
+    - make layout flexible for children
+    - in child css:
+        - flex: grow, shrink, basis
+        - grow: behavior with extra room
+        - shrink: behavior with not enough room
+        - basis: default size
+    - flex-direction: row or column
+    - justify-content: center
+    - align-items: center
 - @media
-      - orientation: portrait
-            - set css rules for portrait viewport
-      - max-height: 500px
+    - orientation: portrait
+        - set css rules for portrait viewport
+    - max-height: 500px
 
 #### CSS Frameworks
 - import bootstrap
