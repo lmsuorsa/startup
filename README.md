@@ -36,7 +36,7 @@ As seen in Pirate's of the Caribbean, Liar's Dice is the game of choice among sc
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Used to create structural and organizational elements. 2 HTML pages. One for login, other for gameplay.
+- **HTML** - Used to create structural and organizational elements. 3 HTML pages. One for login, gameplay and an index page.
 - **CSS** - Used to style and animate the web pages.
 - **React** - Provides login, choice display for making bets, display's other user's bets, and use of React for routing and components.
 - **Service** - Backend service with endpoints for:
