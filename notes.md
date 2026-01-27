@@ -140,6 +140,20 @@
 | svg     | Contains code to render a scalable visual image; can be animated                    |
 | canvas  | Script-driven drawing surface that contains code to render visuals; can be animated |
 
+- Image
+      - should also include an `alt` attribute that describes the image
+- Audio
+      - `controls` attribute if you want the user to be able to control the audio playback
+      - do not display the controls = no visual representation of the audio on page
+      - `autoplay` attribute starts the audio playing as soon as the audio file is loaded
+      - `loop` attribute loops it repeatedly
+- Video
+      - can include the controls or autoplay attributes
+      - may need to include the crossorigin="anonymous" attribute if you are requesting files from a different domain than the one serving your content
+- Internal media
+      - `svg` and `canvas` allow you to create images directly within your HTML
+
+
 
 
 
