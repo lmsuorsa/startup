@@ -153,13 +153,35 @@
 - Internal media
       - `svg` and `canvas` allow you to create images directly within your HTML
 
-
-
-
-
 ## CSS
 
+- missed day 1
 
+#### Responsive Design
+- <meta name="viewport" />
+- float:right
+- display:grid
+      - grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      - grid-auto-rows: 300px
+      - grid-gap
+- display:flex
+      - make layout flexible for children
+      - in child css:
+            - flex: grow, shrink, basis
+            - grow: behavior with extra room
+            - shrink: behavior with not enough room
+            - basis: default size
+      - flex-direction: row or column
+      - justify-content: center
+      - align-items: center
+- @media
+      - orientation: portrait
+            - set css rules for portrait viewport
+      - max-height: 500px
+
+#### CSS Frameworks
+- import bootstrap
+- give items bootstrap classes
 
 ## React Part 1: Routing
 
