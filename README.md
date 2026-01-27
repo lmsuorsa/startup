@@ -58,14 +58,14 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
+- [x] **HTML pages** - `index.html` for login, `play.html` for the game, and `about.html` for game instructions and pirate pictures.
+- [ ] **Proper HTML element usage** - Correct use of `head`, `body` (containing `header`, `main`, and `footer`), `table`, lists, paragraphs, and `img` elements.
+- [ ] **Links** - Links between pages in menu.
+- [ ] **Text** - `about` page contains text.
+- [ ] **3rd party API placeholder** - `about` page will display images of pirates
+- [ ] **Images** - Image on `about` page
+- [ ] **Login placeholder** - Placeholder for auth on the login page.
+- [ ] **DB data placeholder** - Player wincounts displayed next to names during game.
 - [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
 
 ## 🚀 CSS deliverable
