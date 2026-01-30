@@ -183,6 +183,33 @@
 - import bootstrap
 - give items bootstrap classes
 
+## Javascript
+
+- intro
+    - `const msg = "Hello World";`
+        - can't be changed
+    - `let msg = Hello World";`
+        - can be changed
+    - `1 + "cow"` = `1cow`
+        - turn ints into strings
+- objectref.methodcall
+    - `console.log("Hello" + " " + "World")` - print to console
+    - `document.body.innerHTML = 'cow'` - print cow on page
+- function
+    - function join(a,b) {
+        return a + b;
+    }
+- arrays
+    - array.forEach((item)) => console.log(item)
+- look at count func in slides
+- sources tab on chrome - can put breakpoints in js code
+
+- Node.js
+    - js run in console
+- npm package manager
+    - npm install -y
+
+
 ## React Part 1: Routing
 
 
