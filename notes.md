@@ -183,7 +183,9 @@
 - import bootstrap
 - give items bootstrap classes
 
-## Javascript
+## React Part 1: Routing
+
+#### Javascript
 
 - intro
     - `const msg = "Hello World";`
@@ -203,16 +205,32 @@
     - array.forEach((item)) => console.log(item)
 - look at count func in slides
 - sources tab on chrome - can put breakpoints in js code
-
 - Node.js
     - js run in console
 - npm package manager
     - npm install -y
 
-
-## React Part 1: Routing
-
-
+#### React
+- JSX - combining javascript and html
+    - `const x = <p id='2'>text {1+1}</p>`
+- Components
+    - define
+        - `const Hello = () => { return jsx }`
+    - use
+        - `const root = ...`
+        - `root.render(<Hello />)`
+- Properties
+    - destructure the prop object
+    - (props) -> props.phrase
+    - {phrase, say} -> {phrase} {say}
+    - pull only the parameters you need
+- Component State
+    - do codepen
+- Router
+    - allows for single page application
+- package.json
+    - "dev": vite;
+    - npm run dev
 
 ## React Part 2: Reactivity
 
