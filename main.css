@@ -1,18 +1,23 @@
 body {
   display: flex;
+  /* stack children vertically */
   flex-direction: column;
   min-width: 375px;
 }
 
 header {
+  /* fix header height */
   flex: 0 80px;
 }
 
 main {
+  /* main takes remaining vertical space */
   flex: 1 calc(100vh - 110px);
+  /* organize content vertically and center horizontally*/
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* distribute content with equal spacing */
   justify-content: space-around;
 }
 
