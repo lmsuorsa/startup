@@ -22,10 +22,12 @@ main {
 }
 
 footer {
+  /* fix footer height */
   flex: 0 30px;
 }
 
 menu {
+  /* fill available space in header */
   flex: 1;
   display: flex;
   /*  overwrite Bootstrap so the menu does not wrap */
@@ -34,18 +36,22 @@ menu {
 }
 
 .navbar-brand {
+  /* padding and border for logo */
   padding-left: 0.3em;
   border-bottom: solid rgb(182, 182, 182) thin;
 }
 
 menu .nav-item {
+  /* horizontal padding between menu items */
   padding: 0 0.3em;
 }
 
 footer a {
+  /* right-align github link */
   float: right;
 }
 
+/* hide header and footer at smaller screen sizes */
 @media (max-height: 600px) {
   header {
     display: none;
