@@ -75,7 +75,10 @@ footer a {
   justify-content: space-around;
 }
 
-
+.win-count {
+  font-weight: bold;
+  font-style: italic;
+}
 
 /* bring picture and paragraphs coser together by nesting in div */
 .about-container {
