@@ -60,6 +60,21 @@ footer a {
   flex-wrap: wrap;
 }
 
+.player-card {
+  /* fixed size for player cards */
+  width: 200px;
+  height: 150px;
+  border: solid black thin;
+  border-radius: 10px;
+  background-color: rgb(220, 220, 220);
+  color: black;
+  /* arrange contents vertically with spacing */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
 
 
 /* bring picture and paragraphs coser together by nesting in div */
