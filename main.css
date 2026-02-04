@@ -80,6 +80,143 @@ footer a {
   font-style: italic;
 }
 
+/* base dice styling */
+.die {
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border: 2px solid #333;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 5px;
+}
+
+/* unknown */
+.die.face-unknown::before {
+  content: "?";
+}
+
+/* dot styling */
+.dot {
+  width: 8px;
+  height: 8px;
+  background-color: #333;
+  border-radius: 50%;
+  position: absolute;
+}
+
+/* die face 1 - single center dot */
+.die.face-1 .dot {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* die face 2 - two diagonal dots */
+.die.face-2 .dot:nth-child(1) {
+  top: 25%;
+  left: 25%;
+}
+.die.face-2 .dot:nth-child(2) {
+  bottom: 25%;
+  right: 25%;
+}
+
+/* die face 3 - diagonal line of 3 */
+.die.face-3 .dot:nth-child(1) {
+  top: 25%;
+  left: 25%;
+}
+.die.face-3 .dot:nth-child(2) {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.die.face-3 .dot:nth-child(3) {
+  bottom: 25%;
+  right: 25%;
+}
+
+/* die face 4 - four corners */
+.die.face-4 .dot:nth-child(1) {
+  top: 20%;
+  left: 20%;
+}
+.die.face-4 .dot:nth-child(2) {
+  top: 20%;
+  right: 20%;
+}
+.die.face-4 .dot:nth-child(3) {
+  bottom: 20%;
+  left: 20%;
+}
+.die.face-4 .dot:nth-child(4) {
+  bottom: 20%;
+  right: 20%;
+}
+
+/* die face 5 - four corners plus center */
+.die.face-5 .dot:nth-child(1) {
+  top: 20%;
+  left: 20%;
+}
+.die.face-5 .dot:nth-child(2) {
+  top: 20%;
+  right: 20%;
+}
+.die.face-5 .dot:nth-child(3) {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.die.face-5 .dot:nth-child(4) {
+  bottom: 20%;
+  left: 20%;
+}
+.die.face-5 .dot:nth-child(5) {
+  bottom: 20%;
+  right: 20%;
+}
+
+/* die face 6 - two columns of 3 */
+.die.face-6 .dot:nth-child(1) {
+  top: 20%;
+  left: 20%;
+}
+.die.face-6 .dot:nth-child(2) {
+  top: 50%;
+  left: 20%;
+  transform: translateY(-50%);
+}
+.die.face-6 .dot:nth-child(3) {
+  bottom: 20%;
+  left: 20%;
+}
+.die.face-6 .dot:nth-child(4) {
+  top: 20%;
+  right: 20%;
+}
+.die.face-6 .dot:nth-child(5) {
+  top: 50%;
+  right: 20%;
+  transform: translateY(-50%);
+}
+.die.face-6 .dot:nth-child(6) {
+  bottom: 20%;
+  right: 20%;
+}
+
+.dice-container {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
 /* bring picture and paragraphs coser together by nesting in div */
 .about-container {
   display: flex;
