@@ -51,6 +51,12 @@ footer a {
   float: right;
 }
 
+.about-text {
+  max-width: 870px;
+  margin: 0 1em;
+  text-align: left;
+}
+
 /* hide header and footer at smaller screen sizes */
 @media (max-height: 600px) {
   header {
