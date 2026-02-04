@@ -62,8 +62,8 @@ footer a {
 
 .player-card {
   /* fixed size for player cards */
-  width: 200px;
-  height: 150px;
+  width: 300px;
+  height: 200px;
   border: solid black thin;
   border-radius: 10px;
   background-color: rgb(220, 220, 220);
@@ -82,8 +82,8 @@ footer a {
 
 /* base dice styling */
 .die {
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   background-color: white;
   border: 2px solid #333;
   border-radius: 4px;
@@ -101,8 +101,8 @@ footer a {
 
 /* dot styling */
 .dot {
-  width: 8px;
-  height: 8px;
+  width: 5px;
+  height: 5px;
   background-color: #333;
   border-radius: 50%;
   position: absolute;
@@ -127,8 +127,8 @@ footer a {
 
 /* die face 3 - diagonal line of 3 */
 .die.face-3 .dot:nth-child(1) {
-  top: 25%;
-  left: 25%;
+  top: 20%;
+  left: 20%;
 }
 .die.face-3 .dot:nth-child(2) {
   top: 50%;
@@ -136,8 +136,8 @@ footer a {
   transform: translate(-50%, -50%);
 }
 .die.face-3 .dot:nth-child(3) {
-  bottom: 25%;
-  right: 25%;
+  bottom: 20%;
+  right: 20%;
 }
 
 /* die face 4 - four corners */
