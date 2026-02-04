@@ -51,8 +51,19 @@ footer a {
   float: right;
 }
 
+.players-container {
+  /* arrange player cards in a row with spacing */
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+
+
 /* bring picture and paragraphs coser together by nesting in div */
-main > div {
+.about-container {
   display: flex;
   flex-direction: column;
   gap: 20px;
