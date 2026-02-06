@@ -51,27 +51,6 @@ footer a {
   float: right;
 }
 
-/* bring picture and paragraphs coser together by nesting in div */
-.about-container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-/* text alignment and paragraph width */
-.about-text {
-  max-width: 870px;
-  margin: 0 1em;
-  text-align: left;
-}
-
-/* manage picture at different window sizes */
-#picture img {
-  padding-top: 10px;
-  max-width: 100%;
-  height: auto;
-}
-
 /* hide header and footer at smaller screen sizes */
 @media (max-height: 600px) {
   header {
