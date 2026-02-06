@@ -2,10 +2,10 @@ import React from 'react';
 
 export function About() {
   return (
-    <main class="container-fluid bg-secondary text-center">
-      <div class="about-container">
+    <main className="container-fluid bg-secondary text-center">
+      <div className="about-container">
         <div id="picture"><img src="placeholder.jpg" alt="random" /></div>
-        <div class="about-text">
+        <div className="about-text">
           <p>
             As seen in Pirate's of the Caribbean, Liar's Dice is the game of choice among scallywags at sea. 
             To put it simply, you can raise the number of dice, the value of the dice, or call out the last man 
