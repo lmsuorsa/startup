@@ -12,7 +12,7 @@ export default function App() {
     <BrowserRouter>
       <div className="app bg-dark text-light">
         <header className="container-fluid">
-          <nav className="navbar fixed-top navbar-dark">
+          <nav className="navbar navbar-dark">
             <div className="navbar-brand">
               Liar's Dice<sup>&reg;</sup>
             </div>
