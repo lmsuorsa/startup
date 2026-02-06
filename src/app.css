@@ -1,4 +1,4 @@
-body {
+.app {
   display: flex;
   /* stack children vertically */
   flex-direction: column;
