@@ -236,4 +236,73 @@
 
 ## React Part 2: Reactivity
 
+- Color Codepen
+    - onChange html element calls function, passes event as parameter
+    - change it to a text box
+- React
+    - React rerenders any component with a changed state
+    - Change sets the value in an external table controlled by the rect library
+- Simon
+    - create service.js
+    - in about.js
+        - import { getQuote } from '../service.js';
+        - const [quote, setQuote] = React.useState({text:"", author:""});
+        - inside function
+            - react.usestate stuff
+    - in play.js
+        - form onSubmit={register}
 
+## Service
+
+#### Promises
+
+- [Pizza](https://codepen.io/leesjensen/pen/vYVgpyL)
+- Promise state
+    - pending - currently running asynchronously
+    - fulfilled - completed successfully
+    - rejected - failed to complete
+- Basic Promise - print 'done'
+    ```js
+                    // state callback
+    function callback(resolve) {
+    resolve('done'); // fulfilled
+    }
+                            //promise callback
+    const p = new Promise(callback);
+    // when callback resolves, THEN call this
+    p.then((result) => console.log(result));
+    ```
+- fetch()
+    ```js
+    // promise object that prints author name
+    x = fetch('https://quote.cs260.click')
+    y = x.then(r => r.json())
+    y.then((t) => console.log(t.author))
+    ```
+- Coin Toss
+    ```js
+    const coinToss = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (Math.random() > 0.1) {
+                resolve(Math.random() > 0.5 ? 'heads' : 'tails');
+            } else {
+                reject('fell off table');
+            }
+        }, 3000);
+    });
+
+    coinToss
+        .then((result) => console.log(`Toss result: ${result}`))
+        .catch((err) => console.error(`Error: ${err}`))
+        .finally(() => console.log('Toss completed'));
+    ```
+- chain - can get ugly
+    ```js
+    fetch('https://quote.cs260.click').then(r => r.json()).then((t) => console.log(t.author))
+    ```
+- await
+    ```js
+    a = await fetch('https://quote.cs260.click')
+    b = await a.json()
+    console.log(b.author)
+    ```
