@@ -300,9 +300,47 @@
     ```js
     fetch('https://quote.cs260.click').then(r => r.json()).then((t) => console.log(t.author))
     ```
-- await
+- await - returns result of `then`
     ```js
     a = await fetch('https://quote.cs260.click')
     b = await a.json()
     console.log(b.author)
     ```
+
+- Service Requests
+    - URL - uniform resource locator
+        - scheme - https://
+        - domain - byu.edu
+        - port - :443
+        - path - /api/city
+        - parameters - ?q=pro
+        - anchor - #3
+    - Caddy makes connection on port 443, routes to 4000 (startup), then moves  internally to a different port
+    - Request
+        - POST /user HTTP/1.1
+        - Host: cs260.click
+        - User-Agent: curl/7.77.0
+        - Content-Length: 14
+        - Accept: application/json, text/plain, */*
+        - accept-encoding: gzip, deflate
+        - {"name":"tim"}
+    - Response
+        - HTTP/1.1 200 OK
+        - Content-Type: application/json
+        - Content-Length: 15
+        - Content-Encoding: gzip
+        - {"id":"12", "name":"tim"}
+    - Status Codes
+        - 2xx
+            - 200 Success, 204 No content
+        - 3xx
+            - 301/302 redirect(lds.org -> churchofjesuschrist.org), 304 not modified (you've got it already)
+        - 4xx (client mistake)
+            - 400 bad request, 404 not found
+            - 403 forbidden, 429 Too many requests
+        - 5xx (server mistake)
+            - 500 server error, 503 not available
+    - Cache control
+        - browser caches, network card caches, server caches
+        - cons: storage, security, old data
+        - pros: performance
