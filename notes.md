@@ -344,3 +344,20 @@
         - browser caches, network card caches, server caches
         - cons: storage, security, old data
         - pros: performance
+
+- LOCAL STORAGE
+
+- [Web services](https://docs.google.com/presentation/d/1Dma47uvhXpURXYoY6Wp9SAgoMhAhC3REdgepW5LI_-c/edit?slide=id.g27fdbd84860_0_0#slide=id.g27fdbd84860_0_0)
+    - Simon Service endpoints
+        - create account
+        - login
+        - logout
+        - get user
+        - get scores
+        - save scores
+    - Express
+        - res
+            - .status(200) - send status
+            - .send(object) - send object
+            - .redirect(301, link) - redirect
+        - use middleware for authentication
