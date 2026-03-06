@@ -1,7 +1,12 @@
 import React from 'react';
 import './play.css';
+import { placeBet } from '../../hooks/betLogic';
 
 export function Play() {
+  const [dieNum, setDieNum] = React.useState(0);
+  const [dieVal, setDieVal] = React.useState(null);
+
+
   return (
     <main className="container-fluid bg-secondary text-center">
       <div className="players-container">
@@ -60,7 +65,7 @@ export function Play() {
         <div className="bet-form">
           <div className="form-group">
             <label>Number of Dice:</label>
-            <input type="number" id="dice-number" min="1" max="20" value="1" />
+            <input type="number" id="dice-number" min="1" max="20"/>
           </div>
           <div className="form-group">
             <label>Die Value:</label>
