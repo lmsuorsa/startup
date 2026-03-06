@@ -21,54 +21,66 @@ export function Play() {
         console.log("invalid bet");
         return false;
     }
-    console.log("Bet: ", dieNum, dieVal)
+    console.log("Bet: ", "Num - ", dieNum, "Val - ", dieVal)
     placeBet(dieNum, dieVal);
   }
+
+  const [gameState, setGameState] = React.useState({
+    players: [
+      {
+        id: 1,
+        name: "John",
+        wins: 147,
+        dice: [null, null, null],
+        previousBet: "two 3's"
+      },
+      {
+        id: 2,
+        name: "Sophie",
+        wins: 96,
+        dice: [null, null],
+        previousBet: "three 3's"
+      },
+      {
+        id: 3,
+        name: "Ryan",
+        wins: 13,
+        dice: [null, null, null, null],
+        previousBet: null
+      },
+      {
+        id: 4,
+        name: "Me",
+        wins: 3,
+        dice: [2,2,3,5,6],
+        previousBet: "two 2's"
+      }
+    ],
+
+    currentPlayer: 3,
+
+    currentBet: {
+      count: null,
+      value: null
+    },
+
+    round: 1
+  });
 
 
   return (
     <main className="container-fluid bg-secondary text-center">
       <div className="players-container">
-        <PlayerCard
-          name="John"
-          wins={147}
-          previousBet="two 3's"
-          dice={[null, null, null]}
-        />
-        <div className="player-card">
-          <div className="stat">
-            <span className="win-count">96</span>
-            <span className="player-name">Sophie</span>
-          </div>
-          <div className="stat">
-            <span className="previous-bet">Previous Bet: three 3's</span>
-          </div>
-          <div className="stat">
-            <div className="dice-container">
-              <div className="die face-unknown"></div>
-              <div className="die face-unknown"></div>
-            </div>
-          </div>
-        </div>
-        <div className="player-card">
-          <div className="stat">
-            <span className="win-count">13</span>
-            <span className="player-name">Ryan</span>
-          </div>
-          <div className="stat">
-            <span className="previous-bet">Previous Bet: Awaiting bet...</span>
-          </div>
-          <div className="stat">
-            <div className="dice-container">
-              <div className="die face-unknown"></div>
-              <div className="die face-unknown"></div>
-              <div className="die face-unknown"></div>
-              <div className="die face-unknown"></div>
-            </div>
-          </div>
-        </div>
+        {gameState.players.map(player => (
+          <PlayerCard
+            key={player.id}
+            name={player.name}
+            wins={player.wins}
+            previousBet={player.previousBet}
+            dice={player.dice}
+          />
+        ))}
       </div>
-
       <div className="bet-interface">
         <h3>Make Your Bet!</h3>
         <div className="bet-form">
