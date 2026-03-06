@@ -65,7 +65,13 @@ export function Play() {
         <div className="bet-form">
           <div className="form-group">
             <label>Number of Dice:</label>
-            <input type="number" id="dice-number" min="1" max="20"/>
+            <input 
+              type="number"
+              id="dice-number"
+              min="1"
+              max="20"
+              value={dieNum}
+              onChange={(e) => setDieNum(Number(e.target.value))}/>
           </div>
           <div className="form-group">
             <label>Die Value:</label>
