@@ -3,10 +3,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
-import { Login } from './login/login';
-import { Play } from './play/play';
-import { About } from './about/about';
-import { AuthState } from './login/authState';
+import { Login } from './components/login/login';
+import { Play } from './components/play/play';
+import { About } from './components/about/about';
+import { AuthState } from './components/login/authState';
 
 export default function App() {
   const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
