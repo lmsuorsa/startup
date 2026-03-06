@@ -1,10 +1,19 @@
 import React from 'react';
 import './play.css';
+import { Dice } from './dice';
 import { placeBet } from '../../hooks/betLogic';
 
 export function Play() {
   const [dieNum, setDieNum] = React.useState(0);
   const [dieVal, setDieVal] = React.useState(null);
+
+  React.useEffect(() => {
+    console.log("dieNum updated:", dieNum);
+  }, [dieNum]);
+
+  React.useEffect(() => {
+    console.log("dieVal updated:", dieVal);
+  }, [dieVal]);
 
 
   return (
@@ -76,39 +85,14 @@ export function Play() {
           <div className="form-group">
             <label>Die Value:</label>
             <div className="die-selector">
-              <div className="die face-1" data-value="1">
-                <span className="dot"></span>
-              </div>
-              <div className="die face-2" data-value="2">
-                <span className="dot"></span>
-                <span className="dot"></span>
-              </div>
-              <div className="die face-3" data-value="3">
-                <span className="dot"></span>
-                <span className="dot"></span>
-                <span className="dot"></span>
-              </div>
-              <div className="die face-4" data-value="4">
-                <span className="dot"></span>
-                <span className="dot"></span>
-                <span className="dot"></span>
-                <span className="dot"></span>
-              </div>
-              <div className="die face-5" data-value="5">
-                <span className="dot"></span>
-                <span className="dot"></span>
-                <span className="dot"></span>
-                <span className="dot"></span>
-                <span className="dot"></span>
-              </div>
-              <div className="die face-6" data-value="6">
-                <span className="dot"></span>
-                <span className="dot"></span>
-                <span className="dot"></span>
-                <span className="dot"></span>
-                <span className="dot"></span>
-                <span className="dot"></span>
-              </div>
+              {[1,2,3,4,5,6].map(value => (
+                <Dice
+                  key={value}
+                  value={value}
+                  selected={dieVal === value}
+                  onClick={() => setDieVal(value)}
+                />
+              ))}
             </div>
           </div>
           <button id="bet-button" className="btn btn-warning">Place Bet</button>
