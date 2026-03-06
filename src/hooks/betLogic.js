@@ -1,4 +1,8 @@
-export async function placeBet(prevBet, dieNum, dieVal) {
-    
+export async function placeBet(dieNum, dieVal) {
+    if (!dieNum || !dieVal) {
+        console.log("invalid bet");
+        return false;
+    }
+
 }
 

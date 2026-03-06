@@ -95,7 +95,13 @@ export function Play() {
               ))}
             </div>
           </div>
-          <button id="bet-button" className="btn btn-warning">Place Bet</button>
+          <button
+            id="bet-button"
+            className="btn btn-warning"
+            onClick={() => placeBet(dieNum, dieVal)}
+          >
+            Place Bet
+          </button>
         </div>
       </div>
       
