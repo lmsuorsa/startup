@@ -2,6 +2,7 @@ import React from 'react';
 import './play.css';
 import { Dice } from './dice';
 import { placeBet } from '../../hooks/betLogic';
+import { PlayerCard } from './playerCards'
 
 export function Play() {
   const [dieNum, setDieNum] = React.useState(0);
@@ -15,26 +16,25 @@ export function Play() {
     console.log("dieVal updated:", dieVal);
   }, [dieVal]);
 
+  function handlePlaceBet() {
+    if (!dieNum || !dieVal) {
+        console.log("invalid bet");
+        return false;
+    }
+    console.log("Bet: ", dieNum, dieVal)
+    placeBet(dieNum, dieVal);
+  }
+
 
   return (
     <main className="container-fluid bg-secondary text-center">
       <div className="players-container">
-        <div className="player-card">
-          <div className="stat">
-            <span className="win-count">147</span>
-            <span className="player-name">John</span>
-          </div>
-          <div className="stat">
-            <span className="previous-bet">Previous Bet: two 3's</span>
-          </div>
-          <div className="stat">
-            <div className="dice-container">
-              <div className="die face-unknown"></div>
-              <div className="die face-unknown"></div>
-              <div className="die face-unknown"></div>
-            </div>
-          </div>
-        </div>
+        <PlayerCard
+          name="John"
+          wins={147}
+          previousBet="two 3's"
+          dice={[null, null, null]}
+        />
         <div className="player-card">
           <div className="stat">
             <span className="win-count">96</span>
@@ -98,7 +98,7 @@ export function Play() {
           <button
             id="bet-button"
             className="btn btn-warning"
-            onClick={() => placeBet(dieNum, dieVal)}
+            onClick={handlePlaceBet}
           >
             Place Bet
           </button>
