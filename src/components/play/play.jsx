@@ -39,29 +39,36 @@ export function Play() {
     }));
   }
 
-  const [gameState, setGameState] = React.useState({
-    players: [
-      {
-        id: 0,
-        name: "Bot John",
-        wins: 0,
-        dice: [1,3,5,2,4],
+  const [gameState, setGameState] = React.useState(() => {
+    // initial dice roll
+    const botDice = Array(5).fill().map(() => Math.floor(Math.random() * 6) + 1);
+    const humanDice = Array(5).fill().map(() => Math.floor(Math.random() * 6) + 1);
+    return {
+      players: [
+        {
+          id: 0,
+          name: "Bot John",
+          wins: 0,
+          dice: botDice,
+          previousBet: 'none',
+        },
+        {
+          id: 1,
+          name: "Me",
+          wins: 3,
+          dice: humanDice,
+          previousBet: 'none',
+        }
+      ],
+      currentPlayer: 1,
+      currentBet: {
+        count: null,
+        value: null
       },
-      {
-        id: 1,
-        name: "Me",
-        wins: 3,
-        dice: [2,2,3,5,6],
-      }
-    ],
-
-    currentBet: {
-      count: null,
-      value: null
-    },
-    round: 1,
-    gamePhase: 'betting',
-    winner: null
+      round: 1,
+      gameOver: false,
+      winner: null
+    }
   });
 
 
