@@ -3,11 +3,8 @@ import './play.css';
 import { Dice } from './dice';
 import { placeBet } from '../../hooks/betLogic';
 import { PlayerCard } from './playerCards'
-import { perEnvironmentPlugin } from 'vite';
 
 export function Play() {
-
-
 
   const [gameState, setGameState] = React.useState(() => {
     // initial dice roll
@@ -82,6 +79,10 @@ export function Play() {
   };
 
   const handlePlaceBet = () => {
+    if (gameState.currentPlayer !== 1) {
+      alert("Not your turn!");
+      return;
+    }
     if (!dieNum || !dieVal) {
         console.log("invalid bet");
         return false;
