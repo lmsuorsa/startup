@@ -5,16 +5,6 @@ import { placeBet } from '../../hooks/betLogic';
 import { PlayerCard } from './playerCards'
 
 export function Play() {
-  const [dieNum, setDieNum] = React.useState(0);
-  const [dieVal, setDieVal] = React.useState(null);
-
-  React.useEffect(() => {
-    console.log("dieNum updated:", dieNum);
-  }, [dieNum]);
-
-  React.useEffect(() => {
-    console.log("dieVal updated:", dieVal);
-  }, [dieVal]);
 
   function handlePlaceBet() {
     if (!dieNum || !dieVal) {
@@ -70,6 +60,28 @@ export function Play() {
       winner: null
     }
   });
+
+  const [dieNum, setDieNum] = React.useState(0);
+  const [dieVal, setDieVal] = React.useState(null);
+  // debug statements for dieNum, dieVal
+  React.useEffect(() => {
+    console.log("dieNum updated:", dieNum);
+  }, [dieNum]);
+  React.useEffect(() => {
+    console.log("dieVal updated:", dieVal);
+  }, [dieVal]);
+
+  // handle bot's turn
+  React.useEffect(() => {
+    if (gameState.gameOver) return;
+    if (gameState.currentPlayer === 0) {
+      // bot's turn
+      const timer = setTimeout(() => {
+        botMakeDecision();
+      }, 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [gameState.currentPlayer, gameState.gameOver]);
 
 
   return (
