@@ -84,8 +84,15 @@ export function Play() {
       return;
     }
     if (!dieNum || !dieVal) {
-        console.log("invalid bet");
-        return false;
+        alert("Please select a number and value.");
+        return;
+    }
+    const { currentBet } = gameState;
+    if (currentBet.count !== null) {
+      if (dieNum < currentBet.count || (dieNum === currentBet.count && dieVal <= currentBet.value)) {
+        alert("Must bet higher than current bet (higher count, or same count with higher value).");
+        return;
+      }
     }
     setGameState(prev => ({
       ...prev,
