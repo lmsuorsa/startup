@@ -21,50 +21,47 @@ export function Play() {
         console.log("invalid bet");
         return false;
     }
-    console.log("Bet: ", "Num - ", dieNum, "Val - ", dieVal)
-    placeBet(dieNum, dieVal);
+    setGameState(prev => ({
+      ...prev,
+
+      currentBet: {
+        count: dieNum,
+        value: dieVal
+      },
+
+      players: prev.players.map((p, i) =>
+        i === prev.currentPlayer
+          ? { ...p, previousBet: `${dieNum} ${dieVal}'s` }
+          : p
+      ),
+
+      currentPlayer: (prev.currentPlayer + 1) % prev.players.length
+    }));
   }
 
   const [gameState, setGameState] = React.useState({
     players: [
       {
+        id: 0,
+        name: "Bot John",
+        wins: 0,
+        dice: [1,3,5,2,4],
+      },
+      {
         id: 1,
-        name: "John",
-        wins: 147,
-        dice: [null, null, null],
-        previousBet: "two 3's"
-      },
-      {
-        id: 2,
-        name: "Sophie",
-        wins: 96,
-        dice: [null, null],
-        previousBet: "three 3's"
-      },
-      {
-        id: 3,
-        name: "Ryan",
-        wins: 13,
-        dice: [null, null, null, null],
-        previousBet: null
-      },
-      {
-        id: 4,
         name: "Me",
         wins: 3,
         dice: [2,2,3,5,6],
-        previousBet: "two 2's"
       }
     ],
-
-    currentPlayer: 3,
 
     currentBet: {
       count: null,
       value: null
     },
-
-    round: 1
+    round: 1,
+    gamePhase: 'betting',
+    winner: null
   });
 
 
