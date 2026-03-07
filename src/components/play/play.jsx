@@ -3,31 +3,11 @@ import './play.css';
 import { Dice } from './dice';
 import { placeBet } from '../../hooks/betLogic';
 import { PlayerCard } from './playerCards'
+import { perEnvironmentPlugin } from 'vite';
 
 export function Play() {
 
-  function handlePlaceBet() {
-    if (!dieNum || !dieVal) {
-        console.log("invalid bet");
-        return false;
-    }
-    setGameState(prev => ({
-      ...prev,
 
-      currentBet: {
-        count: dieNum,
-        value: dieVal
-      },
-
-      players: prev.players.map((p, i) =>
-        i === prev.currentPlayer
-          ? { ...p, previousBet: `${dieNum} ${dieVal}'s` }
-          : p
-      ),
-
-      currentPlayer: (prev.currentPlayer + 1) % prev.players.length
-    }));
-  }
 
   const [gameState, setGameState] = React.useState(() => {
     // initial dice roll
@@ -82,6 +62,47 @@ export function Play() {
       return () => clearTimeout(timer);
     }
   }, [gameState.currentPlayer, gameState.gameOver]);
+
+  const startNewRound = () => {
+    const newBotDice = Array(gameState.players[0].dice.length).fill().map(() => Math.floor(Math.random() * 6) + 1);
+    const newHumanDice = Array(gameState.players[1].dice.length).fill().map(() => Math.floor(Math.random() * 6) + 1);
+
+    setGameState(prev => ({
+      ...prev,
+      players: prev.players.map(p =>
+        p.id === 0 ? { ...p, dice: newBotDice, previousBet: 'none'} :
+        p.id === 1 ? { ...p, dice: newHumanDice, previousBet: 'none'} : p
+      ),
+      currentBet: { count: null, value: null },
+      currentPlayer: 1,
+      round: prev.round + 1,
+    }));
+    setDieNum(0);
+    setDieVal(null);
+  };
+
+  const handlePlaceBet = () => {
+    if (!dieNum || !dieVal) {
+        console.log("invalid bet");
+        return false;
+    }
+    setGameState(prev => ({
+      ...prev,
+
+      currentBet: {
+        count: dieNum,
+        value: dieVal
+      },
+
+      players: prev.players.map((p, i) =>
+        i === prev.currentPlayer
+          ? { ...p, previousBet: `${dieNum} ${dieVal}'s` }
+          : p
+      ),
+
+      currentPlayer: (prev.currentPlayer + 1) % prev.players.length
+    }));
+  }
 
 
   return (
