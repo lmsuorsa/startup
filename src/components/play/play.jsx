@@ -108,15 +108,10 @@ export function Play() {
       const newBet = { count: dieNum, value: dieVal };
       return {
         ...prev,
-
         currentBet: newBet,
-
         players: prev.players.map((p, i) =>
-          i === prev.currentPlayer
-            ? { ...p, previousBet: `${dieNum} ${dieVal}'s` }
-            : p
+          i === prev.currentPlayer? { ...p, previousBet: `${dieNum} ${dieVal}'s` } : p
         ),
-
         currentPlayer: 0,
       };
     });
@@ -134,8 +129,7 @@ export function Play() {
       alert("No bet to call.");
       return;
     }
-    // human calls bluff
-    resolveCallBluff(1);
+    resolveCallBluff(1);  // human calls bluff
   }
 
   const botMakeDecision = () => {
@@ -164,9 +158,7 @@ export function Play() {
         ...prev,
         currentBet: { count: botNum, value: botVal },
         players: prev.players.map(p =>
-          p.id === prev.currentPlayer
-          ? { ...p, previousBet: `${botNum} ${botVal}'s` }
-          : p
+          p.id === prev.currentPlayer ? { ...p, previousBet: `${botNum} ${botVal}'s` } : p
         ),
         currentPlayer: 1,
       }));
@@ -189,8 +181,8 @@ export function Play() {
     setGameState(prev => {
       const updatedPlayers = prev.players.map(p => {
         if (p.id === loserId) {
-          const newDice = p.dice.slice(0,-1);   // decrement loser dice array
-          return { ...p, dice: newDice };
+          const loserDice = p.dice.slice(0,-1);   // decrement loser dice array
+          return { ...p, dice: loserDice };
         }
         return p;
       });
@@ -208,24 +200,37 @@ export function Play() {
           players: updatedPlayers,
           gameOver: true,
           winner: winnerId,
+          showResult: true
         };
       } else {
-        // start new round
-        const newPlayers = updatedPlayers.map(p => ({
-          ...p,
-          dice: p.dice.map(() => Math.floor(Math.random() * 6) + 1),
-          previousBet: 'none',
-        }));
         return {
           ...prev,
-          players: newPlayers,
+          players: updatedPlayers,
           currentBet: { count: null, value: null },
-          currentPlayer: 1,
-          round: prev.round + 1,
-        }
+          showResult: true
+        };
       }
-    })
-  }
+    });
+    setDieNum(0);
+    setDieVal(null);
+  };
+
+  const resetGame = () => {
+    setGameState({
+      players: [
+        { id: 0, name: "Bot John", wins: 0, dice: Array(5).fill().map(() => Math.floor(Math.random() * 6) + 1), previousBet: 'none' },
+        { id: 1, name: "Me", wins: 0, dice: Array(5).fill().map(() => Math.floor(Math.random() * 6) + 1), previousBet: 'none' }
+      ],
+      currentPlayer: 1,
+      currentBet: { count: null, value: null },
+      round: 1,
+      gameOver: false,
+      winner: null
+    });
+    setDieNum(0);
+    setDieVal(null);
+    setShowResult(false);
+  };
 
 
   return (
@@ -240,7 +245,7 @@ export function Play() {
               wins={bot.wins}
               previousBet={bot.previousBet}
               dice={bot.dice}
-              hidden={true}
+              hidden={!(showResult || gameState.gameOver)}
             />
         ))}
       </div>
