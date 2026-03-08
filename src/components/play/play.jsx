@@ -1,13 +1,12 @@
 import React from 'react';
 import './play.css';
 import { Dice } from './dice';
-import { placeBet } from '../../hooks/betLogic';
 import { PlayerCard } from './playerCards';
 import { loadStats, saveStats } from '../../utils/storage';
 
 export function Play() {
 
-  const accountName = localStorage.getItem('accountName') || 'Me';
+  const userName = localStorage.getItem('userName') || 'Me';
   const savedStats = loadStats();
 
   const [gameState, setGameState] = React.useState(() => {
@@ -25,7 +24,7 @@ export function Play() {
         },
         {
           id: 1,
-          name: accountName,
+          name: userName,
           wins: savedStats.human,
           dice: humanDice,
           previousBet: 'none',
@@ -246,16 +245,23 @@ export function Play() {
     };
 
   const resetGame = () => {
-    setGameState({
-      players: [
-        { id: 0, name: "Bot John", wins: 0, dice: Array(5).fill().map(() => Math.floor(Math.random() * 6) + 1), previousBet: 'none' },
-        { id: 1, name: "Me", wins: 0, dice: Array(5).fill().map(() => Math.floor(Math.random() * 6) + 1), previousBet: 'none' }
-      ],
-      currentPlayer: 1,
-      currentBet: { count: null, value: null },
-      round: 1,
-      gameOver: false,
-      winner: null
+    const userName = localStorage.getItem('userName') || 'Me';
+    setGameState(prev => {
+      const currentBotWins = prev.players.find(p => p.id === 0)?.wins || 0;
+      const currentHumanWins = prev.players.find(p => p.id === 1)?.wins || 0;
+      return {
+        players: [
+          { id: 0, name: "Bot John", wins: currentBotWins, dice: Array(5).fill().map(() => Math.floor(Math.random() * 6) + 1), previousBet: 'none' },
+          { id: 1, name: "Me", wins: currentHumanWins, dice: Array(5).fill().map(() => Math.floor(Math.random() * 6) + 1), previousBet: 'none' }
+        ],
+        currentPlayer: 1,
+        currentBet: { count: null, value: null },
+        round: 1,
+        gameOver: false,
+        winner: null,
+        showResult: false,
+        pendingLoser: null
+      };
     });
     setDieNum(0);
     setDieVal(null);
@@ -330,7 +336,7 @@ export function Play() {
       {gameState.gameOver && (
         <div className="game-over">
           <h2>{gameState.players.find(p => p.id === gameState.winner)?.name} wins!</h2>
-          <button onClick={resetGame} className="btn btn-primary">Play Again</button>
+          <button onClick={resetGame} className="btn btn-warning">Play Again</button>
         </div>
       )}
       
