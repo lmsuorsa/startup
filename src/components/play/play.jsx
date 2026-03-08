@@ -35,7 +35,8 @@ export function Play() {
       round: 1,
       gameOver: false,
       winner: null,
-      showResult: false
+      showResult: false,
+      pendingLoser: null
     }
   });
 
@@ -62,26 +63,58 @@ export function Play() {
 
   // show results for 3 seconds, then advance to next round
   React.useEffect(() => {
-    if (gameState.showResult && !gameState.gameOver) {
+    if (gameState.showResult && !gameState.gameOver && gameState.pendingLoser !== null) {
       const timer = setTimeout(() => {
-        setGameState(prev => ({
-          ...prev,
-          players: prev.players.map(p => ({
-            ...p,
-            dice: p.dice.map(() => Math.floor(Math.random() * 6) + 1),
-            previousBet: 'none'
-          })),
-          currentBet: { count: null, value: null },
-          currentPlayer: 1,
-          round: prev.round + 1,
-          showResult: false
-        }));
+        setGameState(prev => {
+          let updatedPlayers = prev.players.map(p => {
+            if (p.id === prev.pendingLoser) {
+            return { ...p, dice: p.dice.slice(0, -1) }; // remove last die from loser's array
+          }
+          return p;
+          });
+
+          // if human or bot have 0 remaining dice, end game
+          const gameOver = updatedPlayers.some(p => p.dice.length === 0);
+          if (gameOver) {
+            // store id of player who still has dice in winnerId
+            const winnerId = updatedPlayers.find(p => p.dice.length > 0)?.id;
+            updatedPlayers = updatedPlayers.map(p => {
+              if (p.id === winnerId) {
+                return { ...p, wins: p.wins + 1 };
+              }
+              return p;
+            });
+            return {
+              ...prev,
+              players: updatedPlayers,
+              gameOver: true,
+              winner: winnerId,
+              showResult: false,
+              pendingLoser: null
+            };
+          } else {
+            const newPlayers = updatedPlayers.map(p => ({
+              ...p,
+              dice: p.dice.map(() => Math.floor(Math.random() * 6) + 1),
+              previousBet: 'none'
+            }));
+            return {
+              ...prev,
+              players: newPlayers,
+              currentBet: { count: null, value: null },
+              currentPlayer: 1,
+              round: prev.round + 1,
+              showResult: false,
+              pendingLoser: null
+            };
+          }
+        });
         setDieNum(0);
         setDieVal(null);
       }, 3000);
       return () => clearTimeout(timer);
     }
-  }, [gameState.showResult, gameState.gameOver]);
+  }, [gameState.showResult, gameState.gameOver, gameState.pendingLoser]);
 
   // handle human bet
   const handlePlaceBet = () => {
@@ -193,42 +226,15 @@ export function Play() {
     // if betCount >= totalCount, caller loses. if betCount < totalCount, bettor loses
     const loserId = totalCount >= betCount ? callerId : bettorId;
 
-    setGameState(prev => {
-      const updatedPlayers = prev.players.map(p => {
-        if (p.id === loserId) {
-          const loserDice = p.dice.slice(0,-1);   // decrement loser dice array
-          return { ...p, dice: loserDice };
-        }
-        return p;
-      });
-
-      // if human or bot have 0 remaining dice, end game
-      const gameOver = updatedPlayers.some(p => p.dice.length === 0);
-      if (gameOver) {
-        // store id of player who still has dice in winnerId
-        const winnerId = updatedPlayers.find(p => p.dice.length > 0)?.id;
-        updatedPlayers.forEach(p => {
-          if (p.id === winnerId) p.wins += 1;
-        });
-        return {
-          ...prev,
-          players: updatedPlayers,
-          gameOver: true,
-          winner: winnerId,
-          showResult: true
-        };
-      } else {
-        return {
-          ...prev,
-          players: updatedPlayers,
-          currentBet: { count: null, value: null },
-          showResult: true
-        };
-      }
-    });
-    setDieNum(0);
-    setDieVal(null);
-  };
+    setGameState(prev => ({
+      ...prev,
+      currentBet: { count: null, value: null },
+      pendingLoser: loserId,
+      showResult: true
+      }));
+      setDieNum(0);
+      setDieVal(null);
+    };
 
   const resetGame = () => {
     setGameState({
