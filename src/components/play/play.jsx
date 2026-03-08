@@ -60,27 +60,6 @@ export function Play() {
     }
   }, [gameState.currentPlayer, gameState.gameOver]);
 
-  // new round
-  const startNewRound = () => {
-    // create new dice arrays
-    const newBotDice = Array(gameState.players[0].dice.length).fill().map(() => Math.floor(Math.random() * 6) + 1);
-    const newHumanDice = Array(gameState.players[1].dice.length).fill().map(() => Math.floor(Math.random() * 6) + 1);
-
-    // assign dice, reset bet, human starts round, increment round #
-    setGameState(prev => ({
-      ...prev,
-      players: prev.players.map(p =>
-        p.id === 0 ? { ...p, dice: newBotDice, previousBet: 'none'} :
-        p.id === 1 ? { ...p, dice: newHumanDice, previousBet: 'none'} : p
-      ),
-      currentBet: { count: null, value: null },
-      currentPlayer: 1,
-      round: prev.round + 1,
-    }));
-    setDieNum(0);
-    setDieVal(null);
-  };
-
   // handle human bet
   const handlePlaceBet = () => {
     if (gameState.currentPlayer !== 1) {
@@ -195,6 +174,29 @@ export function Play() {
       if (gameOver) {
         // store id of player who still has dice in winnerId
         const winnerId = updatedPlayers.find(p => p.dice.length > 0)?.id;
+        updatedPlayers.forEach(p => {
+          if (p.id === winnerId) p.wins += 1;
+        });
+        return {
+          ...prev,
+          players: updatedPlayers,
+          gameOver: true,
+          winner: winnerId,
+        };
+      } else {
+        // start new round
+        const newPlayers = updatedPlayers.map(p => ({
+          ...p,
+          dice: p.dice.map(() => Math.floor(Math.random() * 6) + 1),
+          previousBet: 'none',
+        }));
+        return {
+          ...prev,
+          players: newPlayers,
+          currentBet: { count: null, value: null },
+          currentPlayer: 1,
+          round: prev.round + 1,
+        }
       }
     })
   }
