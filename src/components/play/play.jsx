@@ -137,19 +137,20 @@ export function Play() {
     // bot call's bluff 30% of the time, makes bet 70%
     const shouldCall = Math.random() < 0.3;
     if (shouldCall) {
-      // bot calls bluff
-      resolveCallBluff(0);
+      resolveCallBluff(0);  // bot calls bluff
     } else {
       const { count, value } = gameState.currentBet;
       const totalDice = gameState.players.reduce((sum, p) => sum + p.dice.length, 0);
       let botNum, botVal;
-      if (count < totalDice) {  // if current count < total dice, increment dieNum
+      if (count < totalDice) {  // if current count < total dice, make a bet
+        if (value < 6) {        // if value < 6, dieVal++
+          botNum = count;
+          botVal = value + 1;
+        } else {                // else, increment dieNum++
         botNum = count + 1;
         botVal = value;
-      } else if (value < 6) {   // if current val < 6, increment dieVal
-        botNum = count;
-        botVal = value + 1;
-      } else {                  // must call bluff
+        }
+      } else {                  // currentBet is maximum possible, must call bluff
         resolveCallBluff(0);
         return;
       }
@@ -189,6 +190,12 @@ export function Play() {
         return p;
       });
 
+      // if human or bot have 0 remaining dice, end game
+      const gameOver = updatedPlayers.some(p => p.dice.length === 0);
+      if (gameOver) {
+        // store id of player who still has dice in winnerId
+        const winnerId = updatedPlayers.find(p => p.dice.length > 0)?.id;
+      }
     })
   }
 
