@@ -98,7 +98,7 @@ export function Play() {
         return;
       }
     }
-    // if bet is valid, update gameState with newBet, update "previous bet" field for Player Card, increment currentPlayer
+    // if bet is valid, update gameState with newBet, update "previous bet" field for Player Card, set currentPlayer to bot
     setGameState(prev => {
       const newBet = { count: dieNum, value: dieVal };
       return {
@@ -112,7 +112,7 @@ export function Play() {
             : p
         ),
 
-        currentPlayer: (prev.currentPlayer + 1) % prev.players.length,
+        currentPlayer: 0,
       };
     });
     // reset input fields after placing bet
@@ -129,8 +129,43 @@ export function Play() {
       alert("No bet to call.");
       return;
     }
+    // human calls bluff
     resolveCallBluff(1);
   }
+
+  const botMakeDecision = () => {
+    // bot call's bluff 30% of the time, makes bet 70%
+    const shouldCall = Math.random() < 0.3;
+    if (shouldCall) {
+      // bot calls bluff
+      resolveCallBluff(0);
+    } else {
+      const { count, value } = gameState.currentBet;
+      const totalDice = gameState.players.reduce((sum, p) => sum + p.dice.length, 0);
+      let botNum, botVal;
+      if (count < totalDice) {  // if current count < total dice, increment dieNum
+        botNum = count + 1;
+        botVal = value;
+      } else if (value < 6) {   // if current val < 6, increment dieVal
+        botNum = count;
+        botVal = value + 1;
+      } else {                  // must call bluff
+        resolveCall(0);
+        return;
+      }
+      // update gameState with bot's bet, update playerCard with previous bet, set currentPlayer to human
+      setGameState(prev => ({
+        ...prev,
+        currentBet: { count: botNum, value: botVal },
+        players: prev.players.map(p =>
+          p.id === prev.currentPlayer
+          ? { ...p, previousBet: `${botNum} ${botVal}'s` }
+          : p
+        ),
+        currentPlayer: 1,
+      }));
+    }
+  };
 
 
   return (
