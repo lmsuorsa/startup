@@ -60,10 +60,13 @@ export function Play() {
     }
   }, [gameState.currentPlayer, gameState.gameOver]);
 
+  // new round
   const startNewRound = () => {
+    // create new dice arrays
     const newBotDice = Array(gameState.players[0].dice.length).fill().map(() => Math.floor(Math.random() * 6) + 1);
     const newHumanDice = Array(gameState.players[1].dice.length).fill().map(() => Math.floor(Math.random() * 6) + 1);
 
+    // assign dice, reset bet, human starts round, increment round #
     setGameState(prev => ({
       ...prev,
       players: prev.players.map(p =>
@@ -78,6 +81,7 @@ export function Play() {
     setDieVal(null);
   };
 
+  // handle human bet
   const handlePlaceBet = () => {
     if (gameState.currentPlayer !== 1) {
       alert("Not your turn!");
@@ -94,22 +98,26 @@ export function Play() {
         return;
       }
     }
-    setGameState(prev => ({
-      ...prev,
+    // if bet is valid, update gameState with newBet, update "previous bet" field for Player Card, increment currentPlayer
+    setGameState(prev => {
+      const newBet = { count: dieNum, value: dieVal };
+      return {
+        ...prev,
 
-      currentBet: {
-        count: dieNum,
-        value: dieVal
-      },
+        currentBet: newBet,
 
-      players: prev.players.map((p, i) =>
-        i === prev.currentPlayer
-          ? { ...p, previousBet: `${dieNum} ${dieVal}'s` }
-          : p
-      ),
+        players: prev.players.map((p, i) =>
+          i === prev.currentPlayer
+            ? { ...p, previousBet: `${dieNum} ${dieVal}'s` }
+            : p
+        ),
 
-      currentPlayer: (prev.currentPlayer + 1) % prev.players.length
-    }));
+        currentPlayer: (prev.currentPlayer + 1) % prev.players.length,
+      };
+    });
+    // reset input fields after placing bet
+    setDieNum(0);
+    setDieVal(null);
   }
 
 
