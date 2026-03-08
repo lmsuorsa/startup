@@ -2,10 +2,17 @@ import React from 'react';
 import './about.css';
 
 export function About() {
+
+  const [imageUrl, setImageUrl] = React.useState('data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=')
+
+  React.useEffect(() => {
+    setImageUrl('../../../placeholder.jpg')
+  })
+
   return (
     <main className="container-fluid bg-secondary text-center">
       <div className="about-container">
-        <div id="picture"><img src="../../../public/placeholder.jpg" alt="random" /></div>
+        <div id="picture"><img src={imageUrl} alt="random" /></div>
         <div className="about-text">
           <p>
             As seen in Pirate's of the Caribbean, Liar's Dice is the game of choice among scallywags at sea. 

@@ -15,20 +15,8 @@ export function Play() {
     const humanDice = Array(5).fill().map(() => Math.floor(Math.random() * 6) + 1);
     return {
       players: [
-        {
-          id: 0,
-          name: "Bot John",
-          wins: savedStats.bot,
-          dice: botDice,
-          previousBet: 'none',
-        },
-        {
-          id: 1,
-          name: userName,
-          wins: savedStats.human,
-          dice: humanDice,
-          previousBet: 'none',
-        }
+        { id: 0, name: "Bot John", wins: savedStats.bot, dice: botDice, previousBet: 'none', },
+        { id: 1, name: userName, wins: savedStats.human, dice: humanDice, previousBet: 'none', }
       ],
       currentPlayer: 1,
       currentBet: { count: null, value: null },
@@ -252,7 +240,7 @@ export function Play() {
       return {
         players: [
           { id: 0, name: "Bot John", wins: currentBotWins, dice: Array(5).fill().map(() => Math.floor(Math.random() * 6) + 1), previousBet: 'none' },
-          { id: 1, name: "Me", wins: currentHumanWins, dice: Array(5).fill().map(() => Math.floor(Math.random() * 6) + 1), previousBet: 'none' }
+          { id: 1, name: userName, wins: currentHumanWins, dice: Array(5).fill().map(() => Math.floor(Math.random() * 6) + 1), previousBet: 'none' }
         ],
         currentPlayer: 1,
         currentBet: { count: null, value: null },
