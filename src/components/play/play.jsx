@@ -180,6 +180,16 @@ export function Play() {
     // if betCount >= totalCount, caller loses. if betCount < totalCount, bettor loses
     const loserId = totalCount >= betCount ? callerId : bettorId;
 
+    setGameState(prev => {
+      const updatedPlayers = prev.players.map(p => {
+        if (p.id === loserId) {
+          const newDice = p.dice.slice(0,-1);   // decrement loser dice array
+          return { ...p, dice: newDice };
+        }
+        return p;
+      });
+
+    })
   }
 
 
