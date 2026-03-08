@@ -22,7 +22,7 @@ export function Play() {
         {
           id: 1,
           name: "Me",
-          wins: 3,
+          wins: 0,
           dice: humanDice,
           previousBet: 'none',
         }
@@ -205,14 +205,16 @@ export function Play() {
   return (
     <main className="container-fluid bg-secondary text-center">
       <div className="players-container">
-        {gameState.players.map(player => (
-          <PlayerCard
-            key={player.id}
-            name={player.name}
-            wins={player.wins}
-            previousBet={player.previousBet}
-            dice={player.dice}
-          />
+        {gameState.players
+          .filter(player => player.id === 0)
+          .map(bot => (
+            <PlayerCard
+              key={bot.id}
+              name={bot.name}
+              wins={bot.wins}
+              previousBet={bot.previousBet}
+              dice={bot.dice}
+            />
         ))}
       </div>
       <div className="bet-interface">
@@ -252,45 +254,18 @@ export function Play() {
       </div>
       
       <div className="player-card">
-        <div className="stat">
-          <span className="win-count">3</span>
-          <span className="player-name">Me</span>
-        </div>
-        <div className="stat">
-          <span className="previous-bet">Previous Bet: two 2's</span>
-        </div>
-        <div className="stat">
-          <div className="dice-container">
-            <div className="die face-2">
-              <span className="dot"></span>
-              <span className="dot"></span>
-            </div>
-            <div className="die face-2">
-              <span className="dot"></span>
-              <span className="dot"></span>
-            </div>
-            <div className="die face-3">
-              <span className="dot"></span>
-              <span className="dot"></span>
-              <span className="dot"></span>
-            </div>
-            <div className="die face-5">
-              <span className="dot"></span>
-              <span className="dot"></span>
-              <span className="dot"></span>
-              <span className="dot"></span>
-              <span className="dot"></span>
-            </div>
-            <div className="die face-6">
-              <span className="dot"></span>
-              <span className="dot"></span>
-              <span className="dot"></span>
-              <span className="dot"></span>
-              <span className="dot"></span>
-              <span className="dot"></span>
-            </div>
-          </div>
-        </div>
+        {gameState.players
+          .filter(player => player.id === 1)
+          .map(human => (
+            <PlayerCard
+              key={human.id}
+              name={human.name}
+              wins={human.wins}
+              previousBet={human.previousBet}
+              dice={human.dice}
+              hidden={false}    // show human’s dice
+            />
+        ))}
       </div>
     </main>
   );
