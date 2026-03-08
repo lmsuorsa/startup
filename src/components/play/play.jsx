@@ -34,13 +34,13 @@ export function Play() {
       },
       round: 1,
       gameOver: false,
-      winner: null
+      winner: null,
+      showResult: false
     }
   });
 
   const [dieNum, setDieNum] = React.useState(0);
   const [dieVal, setDieVal] = React.useState(null);
-  const [showResult, setShowResult] = React.useState(false);
 
   // debug statements for dieNum, dieVal
   React.useEffect(() => {
@@ -52,39 +52,36 @@ export function Play() {
 
   // handle bot's turn
   React.useEffect(() => {
-    if (gameState.gameOver || showResult) return;
+    if (gameState.gameOver || gameState.showResult) return;
     if (gameState.currentPlayer === 0) {
       // bot's turn
       const timer = setTimeout(() => botMakeDecision(), 1000);
       return () => clearTimeout(timer);
     }
-  }, [gameState.currentPlayer, gameState.gameOver, showResult]);
+  }, [gameState.currentPlayer, gameState.gameOver, gameState.showResult]);
 
   // show results for 3 seconds, then advance to next round
   React.useEffect(() => {
-    if (showResult && !gameState.gameOver) {
+    if (gameState.showResult && !gameState.gameOver) {
       const timer = setTimeout(() => {
-        setGameState(prev => {
-          const newPlayers = prev.players.map(p => ({
+        setGameState(prev => ({
+          ...prev,
+          players: prev.players.map(p => ({
             ...p,
             dice: p.dice.map(() => Math.floor(Math.random() * 6) + 1),
             previousBet: 'none'
-          }));
-          return {
-            ...prev,
-            players: newPlayers,
-            currentBet: { count: null, value: null },
-            currentPlayer: 1,
-            round: prev.round + 1,
-            showResult: false
-          };
-        });
+          })),
+          currentBet: { count: null, value: null },
+          currentPlayer: 1,
+          round: prev.round + 1,
+          showResult: false
+        }));
         setDieNum(0);
         setDieVal(null);
       }, 3000);
       return () => clearTimeout(timer);
     }
-  }, [showResult, gameState.gameOver]);
+  }, [gameState.showResult, gameState.gameOver]);
 
   // handle human bet
   const handlePlaceBet = () => {
@@ -247,7 +244,6 @@ export function Play() {
     });
     setDieNum(0);
     setDieVal(null);
-    setShowResult(false);
   };
 
 
@@ -263,11 +259,11 @@ export function Play() {
               wins={bot.wins}
               previousBet={bot.previousBet}
               dice={bot.dice}
-              hidden={!(showResult || gameState.gameOver)}
+              hidden={!(gameState.showResult || gameState.gameOver)}
             />
         ))}
       </div>
-      {!showResult && !gameState.gameOver && (
+      {!gameState.showResult && !gameState.gameOver && (
         <div className="bet-interface">
           <h3>Make Your Bet! (Round {gameState.round})</h3>
           <div className="bet-form">
@@ -323,20 +319,19 @@ export function Play() {
         </div>
       )}
       
-      <div className="player-card">
-        {gameState.players
-          .filter(player => player.id === 1)
-          .map(human => (
-            <PlayerCard
-              key={human.id}
-              name={human.name}
-              wins={human.wins}
-              previousBet={human.previousBet}
-              dice={human.dice}
-              hidden={false}    // show human’s dice
-            />
-        ))}
-      </div>
+      {gameState.players
+        .filter(player => player.id === 1)
+        .map(human => (
+          <PlayerCard
+            key={human.id}
+            name={human.name}
+            wins={human.wins}
+            previousBet={human.previousBet}
+            dice={human.dice}
+            hidden={false}    // show human’s dice
+          />
+      ))}
+      
     </main>
   );
 }
