@@ -2,7 +2,8 @@ import React from 'react';
 import './play.css';
 import { Dice } from './dice';
 import { placeBet } from '../../hooks/betLogic';
-import { PlayerCard } from './playerCards'
+import { PlayerCard } from './playerCards';
+import { loadStats, saveStats } from '../../utils/storage';
 
 export function Play() {
 
