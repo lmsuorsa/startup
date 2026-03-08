@@ -40,6 +40,8 @@ export function Play() {
 
   const [dieNum, setDieNum] = React.useState(0);
   const [dieVal, setDieVal] = React.useState(null);
+  const [showResult, setShowResult] = React.useState(false);
+
   // debug statements for dieNum, dieVal
   React.useEffect(() => {
     console.log("dieNum updated:", dieNum);
@@ -50,15 +52,39 @@ export function Play() {
 
   // handle bot's turn
   React.useEffect(() => {
-    if (gameState.gameOver) return;
+    if (gameState.gameOver || showResult) return;
     if (gameState.currentPlayer === 0) {
       // bot's turn
-      const timer = setTimeout(() => {
-        botMakeDecision();
-      }, 1000);
+      const timer = setTimeout(() => botMakeDecision(), 1000);
       return () => clearTimeout(timer);
     }
-  }, [gameState.currentPlayer, gameState.gameOver]);
+  }, [gameState.currentPlayer, gameState.gameOver, showResult]);
+
+  // show results for 3 seconds, then advance to next round
+  React.useEffect(() => {
+    if (showResult && !gameState.gameOver) {
+      const timer = setTimeout(() => {
+        setGameState(prev => {
+          const newPlayers = prev.players.map(p => ({
+            ...p,
+            dice: p.dice.map(() => Math.floor(Math.random() * 6) + 1),
+            previousBet: 'none'
+          }));
+          return {
+            ...prev,
+            players: newPlayers,
+            currentBet: { count: null, value: null },
+            currentPlayer: 1,
+            round: prev.round + 1,
+            showResult: false
+          };
+        });
+        setDieNum(0);
+        setDieVal(null);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [showResult, gameState.gameOver]);
 
   // handle human bet
   const handlePlaceBet = () => {
@@ -214,6 +240,7 @@ export function Play() {
               wins={bot.wins}
               previousBet={bot.previousBet}
               dice={bot.dice}
+              hidden={true}
             />
         ))}
       </div>
