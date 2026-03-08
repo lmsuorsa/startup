@@ -150,7 +150,7 @@ export function Play() {
         botNum = count;
         botVal = value + 1;
       } else {                  // must call bluff
-        resolveCall(0);
+        resolveCallBluff(0);
         return;
       }
       // update gameState with bot's bet, update playerCard with previous bet, set currentPlayer to human
@@ -166,6 +166,21 @@ export function Play() {
       }));
     }
   };
+
+  const resolveCallBluff = (callerId) => {
+    const { currentBet, players } = gameState;
+    const betValue = currentBet.value;
+    let totalCount = 0;
+    // count all dice with dieVal, increment totalCount with each found
+    players.forEach(p => {
+      p.dice.forEach(v => { if (v === betValue) totalCount++; });
+    });
+    const betCount = currentBet.count;
+    const bettorId = callerId === 0 ? 1 : 0;
+    // if betCount >= totalCount, caller loses. if betCount < totalCount, bettor loses
+    const loserId = totalCount >= betCount ? callerId : bettorId;
+
+  }
 
 
   return (
