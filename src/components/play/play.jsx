@@ -133,6 +133,24 @@ export function Play() {
   }
 
   const botMakeDecision = () => {
+    const { currentBet, players } = gameState;
+    const totalDice = players.reduce((sum, p) => sum + p.dice.length, 0);
+
+    // first bet
+    if (currentBet.count === null) {
+      const botNum = Math.floor(Math.random() * totalDice) + 1;
+      const botVal = Math.floor(Math.random() * 6) + 1;
+      setGameState(prev => ({
+        ...prev,
+        currentBet: { count: botNum, value: botVal },
+        players: prev.players.map(p =>
+          p.id === prev.currentPlayer ? { ...p, previousBet: `${botNum} ${botVal}'s` } : p
+        ),
+        currentPlayer: 1
+      }));
+      return;
+    }
+
     // bot call's bluff 30% of the time, makes bet 70%
     const shouldCall = Math.random() < 0.3;
     if (shouldCall) {
