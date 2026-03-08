@@ -120,6 +120,18 @@ export function Play() {
     setDieVal(null);
   }
 
+  const handleCallBluff = () => {
+    if (gameState.currentPlayer !== 1) {
+      alert("Not your turn!");
+      return;
+    }
+    if (!gameState.currentBet.count) {
+      alert("No bet to call.");
+      return;
+    }
+    resolveCallBluff(1);
+  }
+
 
   return (
     <main className="container-fluid bg-secondary text-center">
