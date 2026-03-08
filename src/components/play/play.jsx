@@ -249,41 +249,61 @@ export function Play() {
             />
         ))}
       </div>
-      <div className="bet-interface">
-        <h3>Make Your Bet!</h3>
-        <div className="bet-form">
-          <div className="form-group">
-            <label>Number of Dice:</label>
-            <input 
-              type="number"
-              id="dice-number"
-              min="1"
-              max="20"
-              value={dieNum}
-              onChange={(e) => setDieNum(Number(e.target.value))}/>
-          </div>
-          <div className="form-group">
-            <label>Die Value:</label>
-            <div className="die-selector">
-              {[1,2,3,4,5,6].map(value => (
-                <Dice
-                  key={value}
-                  value={value}
-                  selected={dieVal === value}
-                  onClick={() => setDieVal(value)}
-                />
-              ))}
+      {!showResult && !gameState.gameOver && (
+        <div className="bet-interface">
+          <h3>Make Your Bet! (Round {gameState.round})</h3>
+          <div className="bet-form">
+            <div className="form-group">
+              <label>Number of Dice:</label>
+              <input 
+                type="number"
+                id="dice-number"
+                min="1"
+                max={gameState.players.reduce((sum, p) => sum + p.dice.length, 0)}
+                value={dieNum}
+                onChange={(e) => setDieNum(Number(e.target.value))}
+                disabled={gameState.currentPlayer !== 1}
+              />
             </div>
+            <div className="form-group">
+              <label>Die Value:</label>
+              <div className="die-selector">
+                {[1,2,3,4,5,6].map(value => (
+                  <Dice
+                    key={value}
+                    value={value}
+                    selected={dieVal === value}
+                    onClick={() => gameState.currentPlayer === 1 && setDieVal(value)}
+                  />
+                ))}
+              </div>
+            </div>
+            <button
+              id="bet-button"
+              className="btn btn-warning"
+              onClick={handlePlaceBet}
+              disabled={gameState.currentPlayer !== 1}
+            >
+              Place Bet
+            </button>
+            <button
+              id="call-button"
+              className="btn btn-danger"
+              onClick={handleCallBluff}
+              disabled={gameState.currentPlayer !== 1 || !gameState.currentBet.count}
+            >
+              Call Bluff
+            </button>
           </div>
-          <button
-            id="bet-button"
-            className="btn btn-warning"
-            onClick={handlePlaceBet}
-          >
-            Place Bet
-          </button>
         </div>
-      </div>
+      )}
+
+      {gameState.gameOver && (
+        <div className="game-over">
+          <h2>{gameState.players.find(p => p.id === gameState.winner)?.name} wins!</h2>
+          <button onClick={resetGame} className="btn btn-primary">Play Again</button>
+        </div>
+      )}
       
       <div className="player-card">
         {gameState.players
