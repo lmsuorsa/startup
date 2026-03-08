@@ -25,6 +25,7 @@
 .win-count {
   font-weight: bold;
   font-style: italic;
+  padding: 5px
 }
 
 /* base dice styling */
@@ -199,4 +200,8 @@
 .die-selector .die.selected {
   box-shadow: 0 0 10px #bea223;
   border-color: #bea223;
+}
+
+.btn {
+  margin: 10px;
 }
