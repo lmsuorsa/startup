@@ -7,6 +7,9 @@ import { loadStats, saveStats } from '../../utils/storage';
 
 export function Play() {
 
+  const accountName = localStorage.getItem('accountName') || 'Me';
+  const savedStats = loadStats();
+
   const [gameState, setGameState] = React.useState(() => {
     // initial dice roll
     const botDice = Array(5).fill().map(() => Math.floor(Math.random() * 6) + 1);
@@ -16,23 +19,20 @@ export function Play() {
         {
           id: 0,
           name: "Bot John",
-          wins: 0,
+          wins: savedStats.bot,
           dice: botDice,
           previousBet: 'none',
         },
         {
           id: 1,
-          name: "Me",
-          wins: 0,
+          name: accountName,
+          wins: savedStats.human,
           dice: humanDice,
           previousBet: 'none',
         }
       ],
       currentPlayer: 1,
-      currentBet: {
-        count: null,
-        value: null
-      },
+      currentBet: { count: null, value: null },
       round: 1,
       gameOver: false,
       winner: null,
@@ -51,6 +51,14 @@ export function Play() {
   React.useEffect(() => {
     console.log("dieVal updated:", dieVal);
   }, [dieVal]);
+
+  React.useEffect(() => {
+    const stats = {
+      bot: gameState.players.find(p => p.id === 0)?.wins || 0,
+      human: gameState.players.find(p => p.id === 1)?.wins || 0
+    };
+    saveStats(stats);
+  }, [gameState.players]);
 
   // handle bot's turn
   React.useEffect(() => {
