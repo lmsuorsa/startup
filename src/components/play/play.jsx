@@ -4,9 +4,8 @@ import { Dice } from './dice';
 import { PlayerCard } from './playerCards';
 import { loadStats, saveStats } from '../../utils/storage';
 
-export function Play() {
-
-  const userName = localStorage.getItem('userName') || 'Me';
+export function Play(props) {
+  const userName = props.userName;
   const savedStats = loadStats();
 
   const [gameState, setGameState] = React.useState(() => {
