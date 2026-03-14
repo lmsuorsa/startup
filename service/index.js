@@ -6,7 +6,7 @@ const app = express();
 
 // wins and users saved in memory, disappear when service restarted
 let users = [];
-let wins = [];
+let wins = [];  // entries format: { name: string, wins: int }
 
 // service port; front-end code statically hosted by service on same port
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
@@ -77,9 +77,35 @@ apiRouter.get('/wins', verifyAuth, (req, res) => {
 
 // submit a win
 apiRouter.post('/win', verifyAuth, (req, res) => {
-  wins = updateWins(req.body);   // you'll need an updateWins function similar to Simon's updateScores
+  wins = updateWins(req.body);
   res.send(wins);
 });
+
+// Default error handler
+app.use(function (err, req, res, next) {
+  res.status(500).send({ type: err.name, message: err.message });
+});
+
+// Return the application's default page if the path is unknown
+app.use((_req, res) => {
+  res.sendFile('index.html', { root: 'public' });
+});
+
+// updateWins
+function updateWins(playerName) {
+  const index = wins.findIndex(entry => entry.name === playerName);
+
+  if (index >= 0) {         // player exists, increment wincount
+    wins[index].wins += 1;
+  } else {                  // new player, create entry with 1 win
+    wins.push({ name: playerName, wins: 1 });
+  }
+
+  // sort wins in descending order
+  wins.sort((a,b) => b.wins - a.wins);
+
+  return wins;
+}
 
 async function createUser(email, password) {
   const passwordHash = await bcrypt.hash(password, 10);
