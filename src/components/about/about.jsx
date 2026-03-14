@@ -4,15 +4,22 @@ import './about.css';
 export function About() {
 
   const [imageUrl, setImageUrl] = React.useState('data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=')
+  const [insult, setInsult] = React.useState('Loading...')
 
   React.useEffect(() => {
     setImageUrl('../../../placeholder.jpg')
-  })
+
+    fetch('/api/pirate-insult')
+      .then((response) => response.json())
+      .then((data) => setInsult(data.insult))
+      .catch(() => setInsult('Failed to load insult'));
+  }, []);
 
   return (
     <main className="container-fluid bg-secondary text-center">
       <div className="about-container">
         <div id="picture"><img src={imageUrl} alt="random" /></div>
+        <div id="insult">"{insult}"</div>
         <div className="about-text">
           <p>
             As seen in Pirate's of the Caribbean, Liar's Dice is the game of choice among scallywags at sea. 

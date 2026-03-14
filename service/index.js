@@ -113,6 +113,17 @@ function updateWins(playerName) {
   return wins;
 }
 
+// proxy for pirate insult to fix CORS block
+apiRouter.get('/pirate-insult', async (req, res) => {
+  try {
+    const response = await fetch('https://pirate.monkeyness.com/api/insult');
+    const insult = await response.text();
+    res.send({ insult });
+  } catch (error) {
+    res.status(500).send({ msg: 'Failed to fetch insult' });
+  }
+});
+
 async function createUser(email, password) {
   const passwordHash = await bcrypt.hash(password, 10);
   const user = { email, password: passwordHash, token: uuid.v4() };
