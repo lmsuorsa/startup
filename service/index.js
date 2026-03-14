@@ -4,6 +4,8 @@ const bcrypt = require('bcryptjs');
 const uuid = require('uuid');
 const app = express();
 
+const authCookieName = 'token';
+
 // wins and users saved in memory, disappear when service restarted
 let users = [];
 let wins = [];  // entries format: { name: string, wins: int }
@@ -115,6 +117,8 @@ async function createUser(email, password) {
 }
 
 async function findUser(field, value) {
+  if (!value) return null;
+
   return users.find(u => u[field] === value);
 }
 
