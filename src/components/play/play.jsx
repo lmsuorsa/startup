@@ -135,16 +135,30 @@ export function Play(props) {
     }
   }, [gameState.showResult, gameState.gameOver, gameState.pendingLoser]);
 
-  // submit player win to backend
+  // submit player win to backend and update win count
   React.useEffect(() => {
     if (gameState.gameOver && gameState.winner !== null) {
       const winner = gameState.players.find(p => p.id === gameState.winner);
       if (winner) {
-        fetch('/api/win', {
+        fetch('/api/win', {         // submit win to backend
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name: winner.name })
-        }).catch(err => console.error('Failed to submit win', err));
+        })
+          .then(res => res.json())
+          .then(updatedWins =>  {
+            // update win count from server response
+            const humanEntry = updatedWins.find(entry => entry.name === userName);
+            setGameState(prev => ({
+              ...prev,
+              players: prev.players.map(p =>
+                p.id === 1
+                  ? { ...p, wins: humanEntry ? humanEntry.wins : 0 }
+                  : p
+              )
+            }));
+          })
+        .catch(err => console.error('Failed to submit win', err));
       }
     }
   }, [gameState.gameOver, gameState.winner, gameState.players]);
