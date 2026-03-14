@@ -69,3 +69,23 @@ const verifyAuth = async (req, res, next) => {
     res.status(401).send({ msg: 'Unauthorized' });
   }
 };
+
+async function createUser(email, password) {
+  const passwordHash = await bcrypt.hash(password, 10);
+  const user = { email, password: passwordHash, token: uuid.v4() };
+  users.push(user);
+  return user;
+}
+
+async function findUser(field, value) {
+  return users.find(u => u[field] === value);
+}
+
+function setAuthCookie(res, authToken) {
+  res.cookie(authCookieName, authToken, {
+    maxAge: 1000 * 60 * 60 * 24 * 365,
+    secure: true,
+    httpOnly: true,
+    sameSite: 'strict',
+  });
+}
