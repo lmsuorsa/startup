@@ -79,7 +79,11 @@ apiRouter.get('/wins', verifyAuth, (req, res) => {
 
 // submit a win
 apiRouter.post('/win', verifyAuth, (req, res) => {
-  wins = updateWins(req.body);
+  const { name } = req.body;
+  if (!name) {
+    return res.status(400).send({ msg: 'Missing name' })
+  }
+  wins = updateWins(name);
   res.send(wins);
 });
 
