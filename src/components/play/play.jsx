@@ -12,10 +12,12 @@ export function Play(props) {
   // REMOVE
   // const savedStats = loadStats();
 
+  const freshDice = () => Array(5).fill().map(() => Math.floor(Math.random() * 6) + 1);
+
   const [gameState, setGameState] = React.useState(() => {
     // initial dice roll
-    const botDice = Array(5).fill().map(() => Math.floor(Math.random() * 6) + 1);
-    const humanDice = Array(5).fill().map(() => Math.floor(Math.random() * 6) + 1);
+    const botDice = freshDice();
+    const humanDice = freshDice();
     return {
       players: [
         { id: 0, name: "Bot John", wins: 0, dice: botDice, previousBet: 'none', },
@@ -161,7 +163,7 @@ export function Play(props) {
         .catch(err => console.error('Failed to submit win', err));
       }
     }
-  }, [gameState.gameOver, gameState.winner, gameState.players]);
+  }, [gameState.gameOver, gameState.winner]);
 
   // handle human bet
   const handlePlaceBet = () => {
@@ -284,14 +286,13 @@ export function Play(props) {
     };
 
   const resetGame = () => {
-    const userName = localStorage.getItem('userName') || 'Me';
     setGameState(prev => {
       const currentBotWins = prev.players.find(p => p.id === 0)?.wins || 0;
       const currentHumanWins = prev.players.find(p => p.id === 1)?.wins || 0;
       return {
         players: [
-          { id: 0, name: "Bot John", wins: currentBotWins, dice: Array(5).fill().map(() => Math.floor(Math.random() * 6) + 1), previousBet: 'none' },
-          { id: 1, name: userName, wins: currentHumanWins, dice: Array(5).fill().map(() => Math.floor(Math.random() * 6) + 1), previousBet: 'none' }
+          { id: 0, name: "Bot John", wins: currentBotWins, dice: freshDice(), previousBet: 'none' },
+          { id: 1, name: userName, wins: currentHumanWins, dice: freshDice(), previousBet: 'none' }
         ],
         currentPlayer: 1,
         currentBet: { count: null, value: null },
