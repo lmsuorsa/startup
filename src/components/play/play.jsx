@@ -2,11 +2,15 @@ import React from 'react';
 import './play.css';
 import { Dice } from './dice';
 import { PlayerCard } from './playerCards';
-import { loadStats, saveStats } from '../../utils/storage';
+
+// REMOVE
+// import { loadStats, saveStats } from '../../utils/storage';
 
 export function Play(props) {
   const userName = props.userName;
-  const savedStats = loadStats();
+
+  // REMOVE
+  // const savedStats = loadStats();
 
   const [gameState, setGameState] = React.useState(() => {
     // initial dice roll
@@ -14,8 +18,8 @@ export function Play(props) {
     const humanDice = Array(5).fill().map(() => Math.floor(Math.random() * 6) + 1);
     return {
       players: [
-        { id: 0, name: "Bot John", wins: savedStats.bot, dice: botDice, previousBet: 'none', },
-        { id: 1, name: userName, wins: savedStats.human, dice: humanDice, previousBet: 'none', }
+        { id: 0, name: "Bot John", wins: 0, dice: botDice, previousBet: 'none', },
+        { id: 1, name: userName, wins: 0, dice: humanDice, previousBet: 'none', }
       ],
       currentPlayer: 1,
       currentBet: { count: null, value: null },
@@ -39,12 +43,32 @@ export function Play(props) {
   }, [dieVal]);
 
   React.useEffect(() => {
-    const stats = {
-      bot: gameState.players.find(p => p.id === 0)?.wins || 0,
-      human: gameState.players.find(p => p.id === 1)?.wins || 0
-    };
-    saveStats(stats);
-  }, [gameState.players]);
+    fetch('/api/wins')
+      .then(res => res.json())
+      .then(winsArray => {
+        const humanEntry = winsArray.find(entry => entry.name === userName);
+        const botWins = 0;
+
+        setGameState(prev => ({
+          ...prev,
+          players: prev.players.map(p =>
+            p.id === 1 
+              ? { ...p, wins:humanEntry ? humanEntry.wins : 0 }
+              : p
+          )
+        }));
+      })
+      .catch(err => console.error('Failed to load wins', err));
+  }, [userName]);
+
+  // REMOVE
+  // React.useEffect(() => {
+  //   const stats = {
+  //     bot: gameState.players.find(p => p.id === 0)?.wins || 0,
+  //     human: gameState.players.find(p => p.id === 1)?.wins || 0
+  //   };
+  //   saveStats(stats);
+  // }, [gameState.players]);
 
   // handle bot's turn
   React.useEffect(() => {
