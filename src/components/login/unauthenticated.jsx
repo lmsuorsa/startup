@@ -17,7 +17,7 @@ export function Unauthenticated(props) {
   async function createUser() {
     // localStorage.setItem('userName', userName);
     // props.onLogin(userName);
-    loginOrCreate(`/api/auth/login`);
+    loginOrCreate(`/api/auth/create`);
   }
 
   async function loginOrCreate(endpoint) {
