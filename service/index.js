@@ -70,6 +70,17 @@ const verifyAuth = async (req, res, next) => {
   }
 };
 
+// get all wins
+apiRouter.get('/wins', verifyAuth, (req, res) => {
+  res.send(wins);
+});
+
+// submit a win
+apiRouter.post('/win', verifyAuth, (req, res) => {
+  wins = updateWins(req.body);   // you'll need an updateWins function similar to Simon's updateScores
+  res.send(wins);
+});
+
 async function createUser(email, password) {
   const passwordHash = await bcrypt.hash(password, 10);
   const user = { email, password: passwordHash, token: uuid.v4() };
@@ -81,6 +92,7 @@ async function findUser(field, value) {
   return users.find(u => u[field] === value);
 }
 
+// setAuthCookie in the HTTP response
 function setAuthCookie(res, authToken) {
   res.cookie(authCookieName, authToken, {
     maxAge: 1000 * 60 * 60 * 24 * 365,
@@ -89,3 +101,7 @@ function setAuthCookie(res, authToken) {
     sameSite: 'strict',
   });
 }
+
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
+});
