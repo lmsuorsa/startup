@@ -7,7 +7,7 @@ import { PlayerCard } from './playerCards';
 export function Play(props) {
   const userName = props.userName;
 
-  const freshDice = () => Array(1).fill().map(() => Math.floor(Math.random() * 6) + 1);
+  const freshDice = () => Array(5).fill().map(() => Math.floor(Math.random() * 6) + 1);
 
   const [gameState, setGameState] = React.useState(() => {
     // initial dice roll
