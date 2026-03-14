@@ -12,7 +12,7 @@ export function About() {
     fetch('/api/pirate-insult')
       .then((response) => response.json())
       .then((data) => setInsult(data.insult))
-      .catch(() => setInsult('Failed to load insult'));
+      .catch(() => setInsult('Failed to load pirate insult :('));
   }, []);
 
   return (

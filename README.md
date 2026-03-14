@@ -98,12 +98,13 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Node.js/Express HTTP service** - I did not complete this part of the deliverable.
-- [ ] **Static middleware for frontend** - I did not complete this part of the deliverable.
-- [ ] **Calls to third party endpoints** - I did not complete this part of the deliverable.
-- [ ] **Backend service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Supports registration, login, logout, and restricted endpoint** - I did not complete this part of the deliverable.
+- [x] **Node.js/Express HTTP service** - `service/index.js` creates an Express app, defines routes, and listens on a port.
+- [x] **Static middleware for frontend** - `app.use(express.static('public'))` serves built frontend files.
+- [x] **Calls to third party endpoints** - Use a CORS proxy in my backend (which makes external requests) to serve pirate insults in `about` page.
+- [x] **Backend service endpoints** - Endpoints for `/auth/create`, `/auth/login`, `/auth/logout`, `/wins`, `/win`, and `/pirate-insult`.
+- [x] **Frontend calls service endpoints** - Frontend fetches from `/api/wins`, `/api/win`, `/api/auth/*`, and `/api/pirate-insult`.
+- [x] **Supports registration, login, logout, and restricted endpoint** - Registration, login, logout all work. `/api/wins` and `/api/win` are protected by verifyAuth, which checks the auth cookie.
+- [x] **Uses BCrypt to hash passwords** - Yes, `bcrypt.hash` in create and `bcrypt.compare` in login.
 
 ## 🚀 DB deliverable
 
