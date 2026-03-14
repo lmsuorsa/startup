@@ -3,16 +3,11 @@ import './play.css';
 import { Dice } from './dice';
 import { PlayerCard } from './playerCards';
 
-// REMOVE
-// import { loadStats, saveStats } from '../../utils/storage';
 
 export function Play(props) {
   const userName = props.userName;
 
-  // REMOVE
-  // const savedStats = loadStats();
-
-  const freshDice = () => Array(5).fill().map(() => Math.floor(Math.random() * 6) + 1);
+  const freshDice = () => Array(1).fill().map(() => Math.floor(Math.random() * 6) + 1);
 
   const [gameState, setGameState] = React.useState(() => {
     // initial dice roll
@@ -49,7 +44,6 @@ export function Play(props) {
       .then(res => res.json())
       .then(winsArray => {
         const humanEntry = winsArray.find(entry => entry.name === userName);
-        const botWins = 0;
 
         setGameState(prev => ({
           ...prev,
@@ -62,15 +56,6 @@ export function Play(props) {
       })
       .catch(err => console.error('Failed to load wins', err));
   }, [userName]);
-
-  // REMOVE
-  // React.useEffect(() => {
-  //   const stats = {
-  //     bot: gameState.players.find(p => p.id === 0)?.wins || 0,
-  //     human: gameState.players.find(p => p.id === 1)?.wins || 0
-  //   };
-  //   saveStats(stats);
-  // }, [gameState.players]);
 
   // handle bot's turn
   React.useEffect(() => {
@@ -141,7 +126,7 @@ export function Play(props) {
   React.useEffect(() => {
     if (gameState.gameOver && gameState.winner !== null) {
       const winner = gameState.players.find(p => p.id === gameState.winner);
-      if (winner) {
+      if (winner && winner.id === 1) {    // if human won...
         fetch('/api/win', {         // submit win to backend
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
