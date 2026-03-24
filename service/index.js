@@ -123,8 +123,12 @@ apiRouter.get('/pirate-insult', async (req, res) => {
 
 async function createUser(email, password) {
   const passwordHash = await bcrypt.hash(password, 10);
-  const user = { email, password: passwordHash, token: uuid.v4() };
-  users.push(user);
+  const user = {
+    email: email,
+    password: passwordHash,
+    token: uuid.v4(),
+  };
+  await DB.addUser(user);
   return user;
 }
 
