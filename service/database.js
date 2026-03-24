@@ -19,3 +19,7 @@ const winCollection = db.collection('win');
 function getUser(email) {
     return userCollection.findOne({ email: email });
 }
+
+function getUserByToken(token) {
+    return userCollection.findOne({ token: token });
+}
