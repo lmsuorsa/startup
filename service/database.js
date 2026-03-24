@@ -43,3 +43,7 @@ async function addWin(win) {
 async function updateWin(name, newWins) {
     await winCollection.updateOne({ name: name }, {$set: { wins: newWins }})
 }
+
+async function getWinByName(name) {
+    return winCollection.findOne({ name: name });
+}
