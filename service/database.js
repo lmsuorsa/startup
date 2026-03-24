@@ -47,3 +47,20 @@ async function updateWin(name, newWins) {
 async function getWinByName(name) {
     return winCollection.findOne({ name: name });
 }
+
+async function getLeaders() {
+    const cursor = winCollection.find().sort({ wins: -1 })
+    return cursor.toArray();
+}
+
+module.exports = {
+  getUser,
+  getUserByToken,
+  addUser,
+  updateUser,
+  updateUserRemoveAuth,
+  addWin,
+  updateWin,
+  getWinByName,
+  getLeaders,
+};
