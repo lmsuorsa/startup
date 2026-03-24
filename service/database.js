@@ -39,3 +39,7 @@ async function updateUserRemoveAuth(user) {
 async function addWin(win) {
     await winCollection.insertOne(win);
 }
+
+async function updateWin(name, newWins) {
+    await winCollection.updateOne({ name: name }, {$set: { wins: newWins }})
+}
