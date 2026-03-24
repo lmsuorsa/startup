@@ -82,8 +82,8 @@ apiRouter.post('/win', verifyAuth, async (req, res) => {
   if (!name) {
     return res.status(400).send({ msg: 'Missing name' })
   }
-  wins = updateWins(name);
-  res.send(wins);
+  const leaders = await updateWins(name);
+  res.send(leaders);
 });
 
 // Default error handler
