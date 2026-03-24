@@ -15,3 +15,7 @@ const winCollection = db.collection('win');
     process.exit(1);
   }
 })();
+
+function getUser(email) {
+    return userCollection.findOne({ email: email });
+}
