@@ -77,7 +77,7 @@ apiRouter.get('/wins', verifyAuth, async (req, res) => {
 });
 
 // submit a win
-apiRouter.post('/win', verifyAuth, (req, res) => {
+apiRouter.post('/win', verifyAuth, async (req, res) => {
   const { name } = req.body;
   if (!name) {
     return res.status(400).send({ msg: 'Missing name' })
@@ -97,19 +97,20 @@ app.use((_req, res) => {
 });
 
 // updateWins
-function updateWins(playerName) {
-  const index = wins.findIndex(entry => entry.name === playerName);
+async function updateWins(playerName) {
+  const existing = await DB.getWinByName(playerName);
+  let newWins;
 
-  if (index >= 0) {         // player exists, increment wincount
-    wins[index].wins += 1;
+  if (existing) {         // player exists, increment wincount
+    newWins = existing.wins + 1;
+    await DB.updateWin(playerName, newWins);
   } else {                  // new player, create entry with 1 win
-    wins.push({ name: playerName, wins: 1 });
+    newWins = 1;
+    await DB.addWin({ name: playerName, wins: 1 });
   }
 
-  // sort wins in descending order
-  wins.sort((a,b) => b.wins - a.wins);
-
-  return wins;
+  // return updated leaderboard
+  return DB.getLeaders();
 }
 
 // proxy for pirate insult to fix CORS block
