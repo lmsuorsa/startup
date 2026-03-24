@@ -71,7 +71,8 @@ const verifyAuth = async (req, res, next) => {
 };
 
 // get all wins
-apiRouter.get('/wins', verifyAuth, (req, res) => {
+apiRouter.get('/wins', verifyAuth, async (req, res) => {
+  const wins = await DB.getLeaders();
   res.send(wins);
 });
 
