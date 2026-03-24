@@ -35,3 +35,7 @@ async function updateUser(user) {
 async function updateUserRemoveAuth(user) {
     await userCollection.updateOne({ email: user.email }, { $unset: { token: 1 } });
 }
+
+async function addWin(win) {
+    await winCollection.insertOne(win);
+}
